@@ -81,6 +81,16 @@
             background: #cbd5e1;
             margin: 0 auto;
         }
+
+        .derivation-step {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            background: #f1f5f9;
+            border-radius: 0.25rem;
+            margin: 0 0.25rem;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-900">
@@ -120,17 +130,38 @@
     <div class="sticky-sub-nav">
         <div class="max-w-7xl mx-auto px-4 overflow-x-auto">
             <div class="flex space-x-6 min-w-max py-4 text-sm font-medium text-slate-600">
+                <a href="#intro" class="hover:text-blue-600 transition">Intro</a>
                 <a href="#alfabeto" class="hover:text-blue-600 transition">1.1 Alfabeto</a>
                 <a href="#cadenas" class="hover:text-blue-600 transition">1.2 Cadenas</a>
                 <a href="#lenguajes" class="hover:text-blue-600 transition">1.3 Lenguajes</a>
-                <a href="#chomsky" class="hover:text-blue-600 transition">1.4 Tipos</a>
-                <a href="#compilador" class="hover:text-blue-600 transition">1.6/1.7 Compiladores</a>
+                <a href="#gramaticas" class="hover:text-blue-600 transition">1.5 Gramáticas</a>
+                <a href="#chomsky" class="hover:text-blue-600 transition">1.4 Tipos (Chomsky)</a>
+                <a href="#compilador" class="hover:text-blue-600 transition">1.7 Compiladores</a>
                 <a href="#laboratorio" class="text-blue-600 font-bold"><i class="fas fa-flask mr-1"></i>Lab Virtual</a>
             </div>
         </div>
     </div>
 
     <main class="max-w-5xl mx-auto px-4 py-12 space-y-16">
+
+        <!-- INTRO -->
+        <section id="intro" class="scroll-mt-32">
+            <div class="bg-blue-50 border border-blue-100 rounded-3xl p-8 flex flex-col md:flex-row items-center gap-6">
+                <div class="flex-1">
+                    <h3 class="text-xl font-bold text-blue-900 mb-2">¿Por qué "Formales"?</h3>
+                    <p class="text-slate-700 text-sm leading-relaxed mb-4">
+                        A diferencia de los lenguajes naturales (Español, Inglés) que son ambiguos y evolucionan socialmente, los <strong>Lenguajes Formales</strong> (Matemáticas, Java, C++) son construcciones artificiales con reglas estrictas. En esta materia, estudiamos cómo definir estas reglas matemáticamente para que una computadora pueda interpretarlas sin error.
+                    </p>
+                    <div class="flex gap-4 text-xs font-bold uppercase tracking-wider">
+                        <div class="flex items-center text-red-500"><i class="fas fa-times-circle mr-2"></i> Ambigüedad</div>
+                        <div class="flex items-center text-green-600"><i class="fas fa-check-circle mr-2"></i> Precisión Exacta</div>
+                    </div>
+                </div>
+                <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center text-2xl text-blue-500 shadow-md">
+                    <i class="fas fa-brain"></i>
+                </div>
+            </div>
+        </section>
 
         <!-- 1.1 Alfabeto -->
         <section id="alfabeto" class="scroll-mt-32">
@@ -142,25 +173,31 @@
                 <div class="grid md:grid-cols-2 gap-8">
                     <div>
                         <p class="text-slate-600 leading-relaxed mb-4">
-                            Un alfabeto es un conjunto <strong>finito</strong> y <strong>no vacío</strong> de símbolos. Matemáticamente, se denota con la letra griega Sigma (\(\Sigma\)).
+                            Se llama alfabeto a un conjunto <strong>finito</strong> y <strong>no vacío</strong>, cuyos elementos se denominan <strong>"letras"</strong> o <strong>"símbolos"</strong>. Matemáticamente, se denota con la letra griega Sigma (\(\Sigma\)).
                         </p>
-                        <p class="text-slate-600 text-sm mb-4">
-                            Es la base de cualquier lenguaje. Si no definimos los símbolos permitidos, no podemos construir palabras ni oraciones.
+                        <p class="text-slate-600 text-sm mb-4 border-l-4 border-blue-200 pl-3 italic">
+                            Se definen los alfabetos por la <strong>enumeración</strong> de los símbolos que contiene.
                         </p>
-                        <div class="math-box">
-                            <p>\(\Sigma = \{0, 1\}\) (Alfabeto binario)</p>
-                            <p>\(\Sigma = \{a, b, c, ..., z\}\) (Alfabeto inglés)</p>
+                        <div class="math-box space-y-2">
+                            <p class="text-xs text-slate-400 font-sans mb-1 uppercase tracking-wider font-bold">Ejemplos:</p>
+                            <p>\(A1 = \{A, B, C, D, E, F, G, \dots, Z\}\)</p>
+                            <p>\(A2 = \{0, 1\}\) <span class="text-slate-400 text-xs ml-2">// Binario</span></p>
+                            <p>\(A3 = \{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\}\) <span class="text-slate-400 text-xs ml-2">// Decimal</span></p>
+                            <p>\(A4 = \{(, )\}\) <span class="text-slate-400 text-xs ml-2">// Paréntesis</span></p>
                         </div>
                     </div>
-                    <div class="bg-slate-50 rounded-xl p-6 border border-slate-100 flex items-center justify-center">
-                        <div class="text-center">
+                    <div class="bg-slate-50 rounded-xl p-6 border border-slate-100 flex flex-col items-center justify-center">
+                        <div class="text-center mb-6">
                             <i class="fas fa-font text-4xl text-blue-400 mb-2"></i>
-                            <p class="text-xs text-slate-500 font-mono">Ejemplo Visual</p>
-                            <div class="mt-3 flex gap-2 justify-center">
-                                <span class="w-8 h-8 rounded bg-white shadow flex items-center justify-center font-bold text-slate-700">a</span>
-                                <span class="w-8 h-8 rounded bg-white shadow flex items-center justify-center font-bold text-slate-700">b</span>
-                                <span class="w-8 h-8 rounded bg-white shadow flex items-center justify-center font-bold text-slate-700">c</span>
-                            </div>
+                            <p class="text-xs text-slate-500 font-mono">Representación Visual</p>
+                        </div>
+                        <div class="flex flex-wrap gap-2 justify-center max-w-[200px]">
+                            <span class="px-3 py-2 rounded bg-white shadow border border-slate-100 font-bold text-slate-700">A</span>
+                            <span class="px-3 py-2 rounded bg-white shadow border border-slate-100 font-bold text-slate-700">B</span>
+                            <span class="px-3 py-2 rounded bg-white shadow border border-slate-100 font-bold text-slate-700">0</span>
+                            <span class="px-3 py-2 rounded bg-white shadow border border-slate-100 font-bold text-slate-700">1</span>
+                            <span class="px-3 py-2 rounded bg-white shadow border border-slate-100 font-bold text-slate-700">(</span>
+                            <span class="px-3 py-2 rounded bg-white shadow border border-slate-100 font-bold text-slate-700">)</span>
                         </div>
                     </div>
                 </div>
@@ -172,25 +209,83 @@
             <div class="concept-card p-8">
                 <div class="flex items-center mb-6">
                     <span class="text-4xl font-black text-slate-200 mr-4">1.2</span>
-                    <h2 class="text-2xl font-bold text-slate-800">Cadenas (Strings)</h2>
+                    <h2 class="text-2xl font-bold text-slate-800">Cadenas o Palabras</h2>
                 </div>
-                <p class="text-slate-600 mb-6">
-                    Una cadena es una secuencia finita de símbolos tomados de un alfabeto. La longitud de la cadena, denotada como \(|w|\), es el número de símbolos que contiene.
-                </p>
                 
-                <div class="grid md:grid-cols-3 gap-6 mb-8">
-                    <div class="bg-blue-50 p-4 rounded-xl">
-                        <h4 class="font-bold text-blue-900 mb-2 text-sm">Cadena Vacía</h4>
-                        <p class="text-xs text-slate-600 mb-2">Una cadena con cero símbolos. Se denota como \(\epsilon\) o \(\lambda\).</p>
-                        <code class="text-xs bg-white px-2 py-1 rounded">|\(\lambda\)| = 0</code>
+                <!-- Definición Principal -->
+                <div class="mb-8 border-l-4 border-blue-500 pl-4 bg-blue-50/50 py-2 rounded-r-lg">
+                    <p class="text-slate-700 text-lg font-medium">
+                        Se denomina <strong>palabra</strong> (o cadena) a toda secuencia <strong>finita</strong> de letras formada con los símbolos de un alfabeto.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <!-- Notación -->
+                    <div>
+                        <h4 class="font-bold text-slate-800 mb-2 flex items-center">
+                            <i class="fas fa-pen-fancy text-blue-500 mr-2"></i> Notación
+                        </h4>
+                        <p class="text-sm text-slate-600 mb-4">
+                            Se usarán <strong>letras minúsculas</strong> para representar las palabras de un alfabeto (\(x, y, z, u, v, w\)).
+                        </p>
+                        <div class="math-box space-y-3">
+                            <div>
+                                <p class="font-bold text-xs text-slate-400 mb-1">SOBRE ALFABETO A1 (LETRAS)</p>
+                                <p>\(x = \text{JOSE}\)</p>
+                                <p>Ejemplo: LUIS, DANIELA, ANA</p>
+                            </div>
+                            <div>
+                                <p class="font-bold text-xs text-slate-400 mb-1">SOBRE ALFABETO A2 (BINARIO)</p>
+                                <p>Ejemplo: \(10000011\)</p>
+                            </div>
+                            <div>
+                                <p class="font-bold text-xs text-slate-400 mb-1">SOBRE ALFABETO A4 (SIGNOS)</p>
+                                <p>\(y = (())\)</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="bg-blue-50 p-4 rounded-xl">
-                        <h4 class="font-bold text-blue-900 mb-2 text-sm">Concatenación</h4>
-                        <p class="text-xs text-slate-600 mb-2">Unir dos cadenas. Si \(x=ato\) y \(y=le\), entonces \(xy=atole\).</p>
+
+                    <!-- Longitud -->
+                    <div>
+                        <h4 class="font-bold text-slate-800 mb-2 flex items-center">
+                            <i class="fas fa-ruler-horizontal text-rose-500 mr-2"></i> Longitud (|w|)
+                        </h4>
+                        <p class="text-sm text-slate-600 mb-4">
+                            La longitud de una palabra es el <strong>número de símbolos</strong> (letras) que la componen.
+                        </p>
+                        <div class="bg-rose-50 rounded-xl p-4 border border-rose-100 text-sm">
+                            <p class="mb-2 font-mono"><strong>Ejemplos:</strong></p>
+                            <ul class="space-y-2">
+                                <li class="flex justify-between border-b border-rose-200 pb-1">
+                                    <span>\(x = \text{JOSE}\)</span>
+                                    <span class="font-bold text-rose-700">\(|x| = 4\)</span>
+                                </li>
+                                <li class="flex justify-between border-b border-rose-200 pb-1">
+                                    <span>\(y = (())\)</span>
+                                    <span class="font-bold text-rose-700">\(|y| = 4\)</span>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span>\(z = 123456\)</span>
+                                    <span class="font-bold text-rose-700">\(|z| = 6\)</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="mt-4 bg-slate-100 p-3 rounded-lg text-xs">
+                            <span class="font-bold text-slate-700">Cadena Vacía (\(\lambda\) o \(\epsilon\)):</span>
+                            <br>Es la palabra que no tiene símbolos. Su longitud es \(0\).
+                        </div>
                     </div>
-                    <div class="bg-blue-50 p-4 rounded-xl">
-                        <h4 class="font-bold text-blue-900 mb-2 text-sm">Potencia</h4>
-                        <p class="text-xs text-slate-600 mb-2">Repetir una cadena n veces. \(w^3 = www\).</p>
+                </div>
+                
+                <!-- Operaciones Básicas (Cartas Pequeñas) -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+                    <div class="bg-white border border-slate-200 p-4 rounded-xl shadow-sm">
+                        <h4 class="font-bold text-blue-900 mb-1 text-sm">Concatenación</h4>
+                        <p class="text-xs text-slate-500">Unir dos palabras. Si \(u=sol\) y \(v=ar\), entonces \(uv=solar\).</p>
+                    </div>
+                    <div class="bg-white border border-slate-200 p-4 rounded-xl shadow-sm">
+                        <h4 class="font-bold text-blue-900 mb-1 text-sm">Potencia</h4>
+                        <p class="text-xs text-slate-500">Repetir una palabra \(n\) veces. \(w^2 = ww\).</p>
                     </div>
                 </div>
 
@@ -198,7 +293,7 @@
                 <div class="border-t border-slate-100 pt-6">
                     <h3 class="text-sm font-bold text-slate-700 mb-3"><i class="fas fa-calculator mr-2 text-blue-500"></i>Calculadora de Longitud</h3>
                     <div class="flex gap-4">
-                        <input type="text" id="stringInput" placeholder="Escribe una cadena..." class="flex-1 bg-slate-50 border border-slate-200 rounded-lg px-4 py-2 text-sm outline-none focus:border-blue-500 transition">
+                        <input type="text" id="stringInput" placeholder="Escribe una palabra (ej: Computadora)..." class="flex-1 bg-slate-50 border border-slate-200 rounded-lg px-4 py-2 text-sm outline-none focus:border-blue-500 transition">
                         <div id="stringLengthDisplay" class="bg-slate-800 text-white px-4 py-2 rounded-lg font-mono text-sm flex items-center min-w-[80px] justify-center">
                             |w| = 0
                         </div>
@@ -207,19 +302,60 @@
             </div>
         </section>
 
-        <!-- 1.3 Lenguajes -->
+        <!-- 1.3 Lenguajes (ACTUALIZADO CON INFO DE IMÁGENES) -->
         <section id="lenguajes" class="scroll-mt-32">
             <div class="concept-card p-8 bg-gradient-to-br from-white to-slate-50">
                 <div class="flex items-center mb-6">
                     <span class="text-4xl font-black text-slate-200 mr-4">1.3</span>
                     <h2 class="text-2xl font-bold text-slate-800">Lenguajes</h2>
                 </div>
-                <p class="text-slate-600 mb-4">
-                    Un lenguaje \(L\) es simplemente un subconjunto de cadenas formadas sobre un alfabeto (\(L \subseteq \Sigma^*\)). Puede ser finito o infinito.
+
+                <!-- Nuevo Bloque: Universo del Discurso -->
+                <div class="mb-8 border-l-4 border-purple-500 pl-4 bg-purple-50/50 py-3 rounded-r-lg shadow-sm">
+                    <h3 class="text-lg font-bold text-purple-900 mb-2 flex items-center">
+                        <i class="fas fa-globe text-purple-600 mr-2"></i> Universo del Discurso
+                    </h3>
+                    <p class="text-slate-700 text-sm leading-relaxed">
+                        Se define como "universo del discurso" o "lenguaje universal" al conjunto de <strong>todas las palabras</strong> que se pueden formar con las letras de un alfabeto. Se suele denotar como \(W(\Sigma)\) o \(\Sigma^*\).
+                    </p>
+                    <p class="text-slate-700 text-sm font-bold mt-2 flex items-center">
+                        <i class="fas fa-infinity text-purple-600 mr-2"></i> Es siempre un conjunto infinito.
+                    </p>
+                </div>
+
+                <!-- Ejemplo Alfabeto Mínimo -->
+                <div class="grid md:grid-cols-2 gap-6 mb-8">
+                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-16 h-16 bg-slate-100 rounded-bl-full z-0"></div>
+                        <h4 class="font-bold text-slate-800 mb-2 text-sm relative z-10">Ejemplo: Alfabeto Mínimo</h4>
+                        <p class="text-xs text-slate-600 mb-3 relative z-10">
+                            Considerando un alfabeto \(A\) con el menor número posible de letras (1):
+                        </p>
+                        <div class="math-box text-xs relative z-10 text-center">
+                            $$ A = \{ a \} $$
+                        </div>
+                    </div>
+                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-16 h-16 bg-purple-50 rounded-bl-full z-0"></div>
+                        <h4 class="font-bold text-slate-800 mb-2 text-sm relative z-10">Lenguaje Generado \(W(A)\)</h4>
+                        <p class="text-xs text-slate-600 mb-3 relative z-10">
+                            El universo del discurso contiene todas las repeticiones posibles:
+                        </p>
+                        <div class="math-box text-xs relative z-10 text-center">
+                            $$ W(A) = \{ \lambda, a, aa, aaa, aaaa, ... \} $$
+                        </div>
+                        <p class="text-[10px] text-slate-400 mt-2 text-right italic relative z-10">Contiene un número infinito de elementos.</p>
+                    </div>
+                </div>
+
+                <!-- Definición de Lenguaje Formal -->
+                <p class="text-slate-600 mb-6 border-b border-slate-200 pb-4">
+                    Un <strong>Lenguaje formal</strong> \(L\) es, por tanto, cualquier subconjunto de este universo (\(L \subseteq W(\Sigma)\)). Puede ser finito o infinito.
                 </p>
+
                 <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
                     <h3 class="font-bold text-slate-800 mb-4">Operaciones sobre Lenguajes</h3>
-                    <div class="space-y-4">
+                    <div class="grid md:grid-cols-2 gap-4">
                         <div class="flex items-start">
                             <div class="bg-orange-100 text-orange-600 p-2 rounded mr-3 text-xs font-mono">L1 ∪ L2</div>
                             <div>
@@ -238,15 +374,52 @@
                             <div class="bg-green-100 text-green-600 p-2 rounded mr-3 text-xs font-mono">L*</div>
                             <div>
                                 <h4 class="text-sm font-bold">Cerradura de Kleene</h4>
-                                <p class="text-xs text-slate-500">Cero o más concatenaciones de cadenas de L. Incluye siempre a \(\lambda\).</p>
+                                <p class="text-xs text-slate-500">Todas las combinaciones posibles. Incluye \(\lambda\).</p>
                             </div>
                         </div>
                         <div class="flex items-start">
                             <div class="bg-rose-100 text-rose-600 p-2 rounded mr-3 text-xs font-mono">L+</div>
                             <div>
                                 <h4 class="text-sm font-bold">Cerradura Positiva</h4>
-                                <p class="text-xs text-slate-500">Una o más concatenaciones (excluye \(\lambda\) si no estaba originalmente).</p>
+                                <p class="text-xs text-slate-500">Todas las combinaciones posibles. Excluye \(\lambda\).</p>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 1.5 Gramáticas -->
+        <section id="gramaticas" class="scroll-mt-32">
+            <div class="concept-card p-8 border-l-4 border-l-purple-500">
+                <div class="flex items-center mb-6">
+                    <span class="text-4xl font-black text-slate-200 mr-4">1.5</span>
+                    <h2 class="text-2xl font-bold text-slate-800">Gramáticas Formales</h2>
+                </div>
+                <p class="text-slate-600 mb-6">
+                    Una gramática es la "receta" matemática para generar las cadenas de un lenguaje. Se define formalmente como una tupla de 4 elementos:
+                </p>
+                
+                <div class="math-box text-center mb-8">
+                    $$ G = (N, T, P, S) $$
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 mb-6">
+                    <ul class="space-y-3 text-sm text-slate-700">
+                        <li><strong class="text-purple-600">N (No Terminales):</strong> Variables que se pueden reemplazar (ej. \(A, B, S\)).</li>
+                        <li><strong class="text-purple-600">T (Terminales):</strong> Símbolos finales del alfabeto (ej. \(a, b, 0, 1\)).</li>
+                        <li><strong class="text-purple-600">P (Producciones):</strong> Reglas de reemplazo (ej. \(S \rightarrow aSb\)).</li>
+                        <li><strong class="text-purple-600">S (Inicial):</strong> El símbolo donde comienza la derivación.</li>
+                    </ul>
+                    
+                    <div class="bg-purple-50 rounded-xl p-5 border border-purple-100">
+                        <h4 class="font-bold text-purple-900 mb-2 text-sm">Ejemplo de Derivación</h4>
+                        <p class="text-xs text-slate-500 mb-2">Regla: \(S \rightarrow 0S1 \mid \epsilon\)</p>
+                        <div class="text-xs space-y-2">
+                            <div>1. Inicio: <span class="derivation-step">S</span></div>
+                            <div>2. Aplica regla: <span class="derivation-step">0S1</span></div>
+                            <div>3. Aplica regla: <span class="derivation-step">00S11</span></div>
+                            <div>4. Termina (\(S \to \epsilon\)): <span class="derivation-step font-bold text-green-600">0011</span></div>
                         </div>
                     </div>
                 </div>
@@ -261,7 +434,7 @@
                     <h2 class="text-2xl font-bold text-slate-800">Tipos de Lenguajes (Chomsky)</h2>
                 </div>
                 <p class="text-slate-600 mb-6 text-sm">
-                    Noam Chomsky clasificó los lenguajes en 4 niveles según la complejidad de la gramática que los genera. Cada nivel contiene al anterior.
+                    Noam Chomsky clasificó los lenguajes en 4 niveles según las restricciones de sus <strong>Gramáticas</strong>. Cada nivel contiene al anterior.
                 </p>
 
                 <!-- Visualización de Capas -->
@@ -269,29 +442,29 @@
                     <!-- Nivel 0 -->
                     <div class="bg-slate-800 text-slate-300 p-4 rounded-t-2xl text-center text-xs border-b border-slate-700 relative z-10 transform scale-110">
                         <span class="font-bold text-white block text-sm">Tipo 0: Recursivamente Enumerables</span>
-                        Máquinas de Turing (Cualquier cómputo)
+                        Sin restricciones. Reconocidos por Máquinas de Turing.
                     </div>
                     <!-- Nivel 1 -->
                     <div class="bg-slate-700 text-slate-200 p-4 text-center text-xs border-b border-slate-600 relative z-20 mx-4 shadow-lg">
                         <span class="font-bold text-white block text-sm">Tipo 1: Dependientes del Contexto</span>
-                        Autómata Linealmente Acotado
+                        Prod: \(\alpha A \beta \rightarrow \alpha \gamma \beta\) (longitud no decrece).
                     </div>
                     <!-- Nivel 2 -->
                     <div class="bg-blue-600 text-white p-4 text-center text-xs border-b border-blue-500 relative z-30 mx-8 shadow-lg">
                         <span class="font-bold block text-sm">Tipo 2: Libres del Contexto (GLC)</span>
-                        Autómata de Pila (Sintaxis de Programación)
+                        Prod: \(A \rightarrow \alpha\) (Lado izq. solo 1 No Terminal).
                     </div>
                     <!-- Nivel 3 -->
                     <div class="bg-green-500 text-white p-4 rounded-b-2xl text-center text-xs relative z-40 mx-12 shadow-lg">
                         <span class="font-bold block text-sm">Tipo 3: Regulares</span>
-                        Autómata Finito (Tokens, RegEx)
+                        Prod: \(A \rightarrow aB\) o \(A \rightarrow a\). (Autómatas Finitos).
                     </div>
                 </div>
-                <p class="text-center text-xs text-slate-400 mt-4 italic">Esta materia se enfoca principalmente en los Tipos 3 y 2.</p>
+                <p class="text-center text-xs text-slate-400 mt-4 italic">Esta materia se enfoca principalmente en los Tipos 3 (Unidad 2 y 3) y 2 (Unidad 6).</p>
             </div>
         </section>
 
-        <!-- 1.6 y 1.7 Estructura de un Compilador -->
+        <!-- 1.7 Compilador -->
         <section id="compilador" class="scroll-mt-32">
             <div class="concept-card p-8">
                 <div class="flex flex-col md:flex-row justify-between md:items-center mb-6">
@@ -306,7 +479,6 @@
                     <div class="space-y-4">
                         <p class="text-slate-600 text-sm mb-4">Un compilador traduce código fuente a código máquina. Este proceso se divide en dos grandes etapas: <strong>Análisis</strong> (Frontend) y <strong>Síntesis</strong> (Backend).</p>
                         
-                        <!-- Lista de fases interactiva (Hover) -->
                         <div class="space-y-2">
                             <div class="group p-3 rounded-lg hover:bg-rose-50 border border-transparent hover:border-rose-200 transition cursor-default">
                                 <h4 class="font-bold text-slate-700 group-hover:text-rose-600 text-sm flex justify-between">
@@ -315,7 +487,6 @@
                                 </h4>
                                 <p class="text-xs text-slate-500 mt-1 hidden group-hover:block">Lee el flujo de caracteres y los agrupa en tokens significativos (palabras reservadas, ids, símbolos).</p>
                             </div>
-
                             <div class="group p-3 rounded-lg hover:bg-amber-50 border border-transparent hover:border-amber-200 transition cursor-default">
                                 <h4 class="font-bold text-slate-700 group-hover:text-amber-600 text-sm flex justify-between">
                                     2. Análisis Sintáctico (Parser)
@@ -323,7 +494,6 @@
                                 </h4>
                                 <p class="text-xs text-slate-500 mt-1 hidden group-hover:block">Verifica la estructura gramatical y genera el Árbol de Derivación.</p>
                             </div>
-
                             <div class="group p-3 rounded-lg hover:bg-emerald-50 border border-transparent hover:border-emerald-200 transition cursor-default">
                                 <h4 class="font-bold text-slate-700 group-hover:text-emerald-600 text-sm flex justify-between">
                                     3. Análisis Semántico
@@ -331,7 +501,6 @@
                                 </h4>
                                 <p class="text-xs text-slate-500 mt-1 hidden group-hover:block">Revisa la consistencia lógica: tipos de datos, variables declaradas, scopes.</p>
                             </div>
-                            
                             <div class="group p-3 rounded-lg hover:bg-slate-100 border border-transparent hover:border-slate-200 transition cursor-default">
                                 <h4 class="font-bold text-slate-700 text-sm">4. Generación de Código Intermedio</h4>
                             </div>
@@ -344,15 +513,10 @@
                         </div>
                     </div>
 
-                    <!-- Diagrama Visual -->
                     <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 flex flex-col items-center justify-center relative overflow-hidden">
                         <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEiIGZpbGw9IiNjYmQ1ZTEiLz48L3N2Zz4=')] opacity-30"></div>
-                        
-                        <!-- Bloque Fuente -->
                         <div class="bg-white px-4 py-2 rounded border border-slate-300 shadow-sm text-xs font-mono mb-2 relative z-10">Código Fuente</div>
                         <div class="phase-connector relative z-10"></div>
-                        
-                        <!-- Caja Compilador -->
                         <div class="bg-blue-600 text-white p-4 rounded-xl shadow-lg w-full max-w-[200px] text-center relative z-10">
                             <i class="fas fa-cogs text-2xl mb-2 animate-spin-slow" style="animation-duration: 10s;"></i>
                             <h5 class="font-bold text-sm">Compilador</h5>
@@ -363,21 +527,17 @@
                                 <div class="bg-blue-700 rounded py-1">Semántico</div>
                             </div>
                         </div>
-                        
                         <div class="phase-connector relative z-10"></div>
-                        <!-- Bloque Destino -->
                         <div class="bg-slate-800 text-white px-4 py-2 rounded border border-slate-600 shadow-sm text-xs font-mono mt-2 relative z-10">Código Máquina (0101)</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Laboratorio Interactivo: Validador de Cadenas -->
+        <!-- Laboratorio Interactivo -->
         <section id="laboratorio" class="scroll-mt-32 pb-20">
             <div class="bg-slate-900 rounded-[2.5rem] p-8 md:p-12 text-white shadow-2xl relative overflow-hidden">
-                <!-- Fondo decorativo -->
                 <div class="absolute top-0 right-0 w-96 h-96 bg-blue-600 rounded-full blur-[120px] opacity-20 pointer-events-none"></div>
-                
                 <div class="relative z-10">
                     <div class="flex items-center mb-8">
                         <div class="bg-blue-600 p-3 rounded-xl mr-4">
@@ -390,7 +550,6 @@
                     </div>
 
                     <div class="grid lg:grid-cols-2 gap-12">
-                        <!-- Controles -->
                         <div class="space-y-6">
                             <div>
                                 <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">1. Define el Alfabeto (\(\Sigma\))</label>
@@ -409,7 +568,6 @@
                             </div>
                         </div>
 
-                        <!-- Resultados -->
                         <div class="bg-slate-950 rounded-2xl p-6 border border-slate-800 font-mono text-sm relative">
                             <div class="absolute top-4 right-4 flex space-x-2">
                                 <div class="w-3 h-3 rounded-full bg-red-500"></div>
@@ -417,7 +575,6 @@
                                 <div class="w-3 h-3 rounded-full bg-green-500"></div>
                             </div>
                             <p class="text-slate-500 mb-4 border-b border-slate-800 pb-2">Resultados del Análisis</p>
-                            
                             <div id="labOutput" class="space-y-3">
                                 <div class="opacity-50 text-slate-400 text-center py-8">
                                     Define un alfabeto e ingresa una cadena para comenzar...
@@ -447,14 +604,12 @@
             <div class="flex space-x-6">
                 <a href="index.html" class="text-xs font-bold text-slate-400 hover:text-white transition">INICIO</a>
                 <a href="#" class="text-xs font-bold text-white transition border-b border-blue-500">UNIDAD 1</a>
-                <!-- Links futuros para otras unidades -->
                 <a href="#" class="text-xs font-bold text-slate-600 cursor-not-allowed">UNIDAD 2</a>
             </div>
         </div>
     </footer>
 
     <script>
-        // Funcionalidad 1.2: Calculadora simple de longitud
         const stringInput = document.getElementById('stringInput');
         const lengthDisplay = document.getElementById('stringLengthDisplay');
 
@@ -463,14 +618,11 @@
             lengthDisplay.innerText = `|w| = ${val.length}`;
         });
 
-        // Funcionalidad Laboratorio: Validador
         function validarCadena() {
             const rawAlphabet = document.getElementById('labAlphabet').value;
             const cadena = document.getElementById('labString').value;
             const outputDiv = document.getElementById('labOutput');
 
-            // 1. Parsear Alfabeto
-            // Divide por comas, elimina espacios y filtra entradas vacías
             const alphabet = rawAlphabet.split(',').map(s => s.trim()).filter(s => s !== "");
             
             if (alphabet.length === 0) {
@@ -478,7 +630,6 @@
                 return;
             }
 
-            // 2. Validar cada caracter de la cadena
             let invalidChars = [];
             let isValid = true;
 
@@ -489,10 +640,7 @@
                 }
             }
 
-            // 3. Mostrar Resultados
             let htmlResult = "";
-            
-            // Mostrar Alfabeto Interpretado
             htmlResult += `<div class="mb-2"><span class="text-blue-400">Alfabeto \(\Sigma\):</span> \{${alphabet.join(', ')}\}</div>`;
             
             if (isValid) {
@@ -515,7 +663,6 @@
 
             outputDiv.innerHTML = htmlResult;
             
-            // Re-renderizar MathJax si es necesario (aunque aqui es texto plano mayormente)
             if (window.MathJax) {
                 MathJax.typesetPromise();
             }
