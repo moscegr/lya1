@@ -485,7 +485,7 @@
                     Un <strong>Lenguaje formal</strong> \(L\) es, por tanto, cualquier subconjunto de este universo (\(L \subseteq W(\Sigma)\)). Puede ser finito o infinito.
                 </p>
 
-                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm mb-8">
                     <h3 class="font-bold text-slate-800 mb-4">Operaciones sobre Lenguajes</h3>
                     <div class="grid md:grid-cols-2 gap-4">
                         <div class="flex items-start">
@@ -518,6 +518,67 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- EJEMPLOS PRÁCTICOS DE OPERACIONES (NUEVO) -->
+                <div class="border-t border-slate-100 pt-6">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-2 rounded-lg mr-3 text-blue-600">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-800 text-lg">Ejemplos Prácticos de Operaciones</h3>
+                    </div>
+                    
+                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200">
+                        <p class="text-xs text-slate-500 mb-3 uppercase tracking-wider font-bold">Dados los lenguajes:</p>
+                        <div class="flex gap-4 mb-4">
+                            <div class="bg-white px-3 py-2 rounded shadow-sm border border-slate-100 text-sm font-mono text-slate-700">
+                                \(L_1 = \{ \text{foco}, \text{luz} \}\)
+                            </div>
+                            <div class="bg-white px-3 py-2 rounded shadow-sm border border-slate-100 text-sm font-mono text-slate-700">
+                                \(L_2 = \{ \text{on}, \text{off} \}\)
+                            </div>
+                        </div>
+
+                        <div class="space-y-3">
+                            <!-- Ejemplo Union -->
+                            <div class="flex flex-col md:flex-row md:items-center gap-2 text-sm">
+                                <span class="font-bold text-orange-600 w-24">1. Unión:</span>
+                                <span class="font-mono text-slate-600">\(L_1 \cup L_2 = \{ \text{foco}, \text{luz}, \text{on}, \text{off} \}\)</span>
+                            </div>
+                            <!-- Ejemplo Concatenación -->
+                            <div class="flex flex-col md:flex-row md:items-center gap-2 text-sm">
+                                <span class="font-bold text-purple-600 w-24">2. Concat:</span>
+                                <span class="font-mono text-slate-600">\(L_1 L_2 = \{ \text{focoon}, \text{focooff}, \text{luzon}, \text{luzoff} \}\)</span>
+                            </div>
+                            <!-- Ejemplo Potencia -->
+                            <div class="flex flex-col md:flex-row md:items-center gap-2 text-sm">
+                                <span class="font-bold text-green-600 w-24">3. Potencia:</span>
+                                <span class="font-mono text-slate-600">\(L_2^2 = \{ \text{onon}, \text{onoff}, \text{offon}, \text{offoff} \}\)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EJERCICIOS PARA ALUMNOS 1.3 (NUEVO) -->
+                <div class="mt-8 pt-6">
+                    <!-- Contexto para Libreta -->
+                    <div class="bg-indigo-50 border-l-4 border-indigo-500 p-4 mb-6 rounded-r-lg shadow-sm">
+                        <div class="flex items-start">
+                            <i class="fas fa-book-reader text-indigo-600 mt-1 mr-3 text-lg"></i>
+                            <div>
+                                <h4 class="text-sm font-bold text-indigo-900 uppercase tracking-wide">Actividad 1.3: Operando Lenguajes</h4>
+                                <p class="text-sm text-indigo-800 mt-1 leading-relaxed">
+                                    <strong>Instrucciones:</strong> Copia y resuelve en tu libreta.
+                                    <br>Dados los lenguajes \(A=\{0, 1\}\) y \(B=\{x\}\), calcula y escribe por extensión los conjuntos resultantes para:
+                                    <br>a) \(A \cup B\)
+                                    <br>b) \(AB\) (Concatenación)
+                                    <br>c) \(B^3\)
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
