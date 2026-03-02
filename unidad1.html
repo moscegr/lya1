@@ -700,7 +700,7 @@
                     <p class="text-[11px] text-slate-400 mt-2 text-center italic">Tabla 2.1. Jerarquía de Chomsky y su relación con las máquinas abstractas.</p>
                 </div>
 
-                <!-- DETALLES Y EJEMPLOS (NUEVO BLOQUE) -->
+                <!-- DETALLES Y EJEMPLOS -->
                 <div class="mt-10 grid md:grid-cols-2 gap-6">
                     <div class="bg-white p-5 rounded-xl border border-green-200 shadow-sm">
                         <h4 class="font-bold text-green-700 mb-2 flex items-center"><i class="fas fa-bolt mr-2"></i>Tipo 3: Lenguajes Regulares</h4>
@@ -723,7 +723,7 @@
                     </div>
                 </div>
 
-                <!-- EJERCICIOS EN JAVA (NUEVO BLOQUE) -->
+                <!-- EJERCICIOS EN JAVA -->
                 <div class="mt-8 border-t border-slate-100 pt-6">
                     
                     <!-- Contexto para Libreta -->
@@ -803,6 +803,55 @@
         System.out.<span class="text-blue-300">println</span>(<span class="text-green-400">"(() pertenece? "</span> + <span class="text-blue-300">esValido</span>(<span class="text-green-400">"(()"</span>));
     }
 }</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- RETOS DE PROGRAMACIÓN PARA EL ALUMNO -->
+                    <div class="mt-8 pt-6 border-t border-slate-200">
+                        <div class="bg-emerald-50 border-l-4 border-emerald-500 p-4 mb-6 rounded-r-lg shadow-sm">
+                            <div class="flex items-start">
+                                <i class="fas fa-keyboard text-emerald-600 mt-1 mr-3 text-lg"></i>
+                                <div>
+                                    <h4 class="text-sm font-bold text-emerald-900 uppercase tracking-wide">Retos de Programación (Práctica en IDE)</h4>
+                                    <p class="text-sm text-emerald-800 mt-1 leading-relaxed">
+                                        <strong>Instrucciones:</strong> Abre tu entorno de desarrollo (Eclipse, NetBeans, VS Code) e implementa las siguientes clases en Java para resolver estos problemas reales usando la teoría de la jerarquía de Chomsky.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <!-- Reto 1 -->
+                            <div class="bg-emerald-50/50 p-5 rounded-xl border border-emerald-100 relative group hover:border-emerald-300 transition shadow-sm">
+                                <div class="absolute -top-3 -right-3 bg-emerald-100 text-emerald-700 rounded-full w-8 h-8 flex items-center justify-center font-bold text-xs border border-emerald-200">1</div>
+                                <h4 class="text-sm font-bold text-emerald-900 mb-2"><i class="fas fa-car mr-2"></i>Reto Tipo 3: Matrículas (RegEx)</h4>
+                                <p class="text-xs text-slate-600 mb-3">
+                                    Crea una clase <code>ValidadorMatricula</code>. Utiliza expresiones regulares para aceptar cadenas que cumplan con el siguiente patrón (Lenguaje Regular):
+                                    <br><br>
+                                    <strong>Patrón:</strong> Exactamente 3 letras mayúsculas, seguidas de un guión medio, seguidas de 3 o 4 números.
+                                </p>
+                                <div class="bg-white p-3 rounded border border-slate-200 text-xs font-mono text-slate-700">
+                                    <span class="text-green-600">✔ "ABC-123"</span><br>
+                                    <span class="text-green-600">✔ "XYZ-9999"</span><br>
+                                    <span class="text-red-500">✘ "ab-12"</span>
+                                </div>
+                            </div>
+
+                            <!-- Reto 2 -->
+                            <div class="bg-emerald-50/50 p-5 rounded-xl border border-emerald-100 relative group hover:border-emerald-300 transition shadow-sm">
+                                <div class="absolute -top-3 -right-3 bg-emerald-100 text-emerald-700 rounded-full w-8 h-8 flex items-center justify-center font-bold text-xs border border-emerald-200">2</div>
+                                <h4 class="text-sm font-bold text-emerald-900 mb-2"><i class="fas fa-cubes mr-2"></i>Reto Tipo 2: \(0^n 1^n\) (Pila)</h4>
+                                <p class="text-xs text-slate-600 mb-3">
+                                    Crea una clase <code>Reconocedor0n1n</code>. Usa la estructura de datos <code>Stack</code> para validar el lenguaje clásico libre de contexto donde el número de ceros debe ser igual al número de unos consecutivos.
+                                    <br><br>
+                                    <strong>Patrón:</strong> \(L = \{0^n 1^n \mid n \ge 1\}\).
+                                </p>
+                                <div class="bg-white p-3 rounded border border-slate-200 text-xs font-mono text-slate-700">
+                                    <span class="text-green-600">✔ "0011"</span><br>
+                                    <span class="text-green-600">✔ "00001111"</span><br>
+                                    <span class="text-red-500">✘ "011"</span>
+                                </div>
                             </div>
                         </div>
                     </div>
