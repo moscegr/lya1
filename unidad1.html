@@ -616,6 +616,197 @@
                         Tokens, palabras reservadas. (Autómatas Finitos).
                     </div>
                 </div>
+
+                <!-- CONEXIÓN: LENGUAJES NATURALES VS FORMALES (NUEVO BLOQUE BASADO EN EL PDF) -->
+                <div class="bg-indigo-50 p-6 rounded-2xl border border-indigo-200 mt-10 mb-8 shadow-sm relative overflow-hidden">
+                    <div class="absolute -right-4 -top-4 text-indigo-100 opacity-50 transform rotate-12">
+                        <i class="fas fa-comments text-9xl"></i>
+                    </div>
+                    <div class="relative z-10">
+                        <h3 class="font-bold text-indigo-900 mb-3 flex items-center text-lg">
+                            <i class="fas fa-link mr-2 text-indigo-600"></i> ¿Dónde encajan los Lenguajes Naturales y Formales aquí?
+                        </h3>
+                        <p class="text-sm text-slate-700 mb-4 leading-relaxed">
+                            Según el texto de estudio, Chomsky desarrolló originalmente esta jerarquía intentando formalizar los <strong>Lenguajes Naturales</strong>. Sin embargo, su aplicación real divergió:
+                        </p>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded-xl border border-indigo-100 shadow-sm">
+                                <h4 class="font-bold text-slate-800 text-sm mb-2"><i class="fas fa-users text-rose-500 mr-2"></i>Lenguajes Naturales (Difíciles de encajar)</h4>
+                                <p class="text-xs text-slate-600">
+                                    Los lenguajes como el español o inglés demostraron ser muy complejos. El Tipo 3 (Regular) es <em>demasiado débil</em> para explicar estructuras oracionales. El Tipo 2 (Libre de contexto) modela bien el árbol sintáctico (sujeto-verbo), pero falla con reglas de concordancia complejas (género/número), requiriendo reglas del Tipo 1 o 0 que son computacionalmente ineficientes de analizar.
+                                </p>
+                            </div>
+                            <div class="bg-white p-4 rounded-xl border border-indigo-100 shadow-sm">
+                                <h4 class="font-bold text-slate-800 text-sm mb-2"><i class="fas fa-code text-green-600 mr-2"></i>Lenguajes Formales (Encaje perfecto)</h4>
+                                <p class="text-xs text-slate-600">
+                                    ¡Aquí es donde la jerarquía triunfó! En lugar de intentar que las computadoras entiendan el complejo lenguaje humano, <strong>diseñamos los lenguajes de programación (formales) restringiéndolos artificialmente para que encajaran exactamente en el Tipo 3 y Tipo 2</strong>. Esto garantiza que existan algoritmos rápidos para compilarlos.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="mt-4 bg-indigo-900 text-indigo-100 text-xs p-3 rounded-lg text-center font-medium">
+                            Conclusión: La jerarquía intentó domar los lenguajes naturales, pero terminó siendo la arquitectura fundamental para construir los lenguajes formales artificiales.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TABLA FORMAL (Añadida basada en el PDF proporcionado) -->
+                <div class="mt-10 overflow-x-auto">
+                    <h3 class="text-lg font-bold text-slate-800 mb-3 border-b border-slate-200 pb-2">Clasificación Formal</h3>
+                    <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+                        <table class="w-full text-sm text-left text-slate-600">
+                            <thead class="text-xs text-slate-700 uppercase bg-slate-100">
+                                <tr>
+                                    <th scope="col" class="px-6 py-4">Gramáticas</th>
+                                    <th scope="col" class="px-6 py-4 border-l border-slate-200">Lenguajes</th>
+                                    <th scope="col" class="px-6 py-4 border-l border-slate-200">Máquinas</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="bg-white border-b border-slate-100 hover:bg-slate-50 transition">
+                                    <td class="px-6 py-4">
+                                        <span class="font-bold text-slate-900">Tipo 0</span><br>
+                                        <span class="text-xs text-slate-500">Gramáticas estructura-frase<br>Gramáticas sin restricciones</span>
+                                    </td>
+                                    <td class="px-6 py-4 border-l border-slate-100">Lenguajes recursivamente enumerables</td>
+                                    <td class="px-6 py-4 border-l border-slate-100">Máquinas de Turing<br>Máquinas de Turing no deterministas</td>
+                                </tr>
+                                <tr class="bg-white border-b border-slate-100 hover:bg-slate-50 transition">
+                                    <td class="px-6 py-4">
+                                        <span class="font-bold text-slate-900">Tipo 1</span><br>
+                                        <span class="text-xs text-slate-500">Gramáticas sensitivas al contexto<br>Gramáticas monótonas</span>
+                                    </td>
+                                    <td class="px-6 py-4 border-l border-slate-100">Lenguajes sensitivos al contexto</td>
+                                    <td class="px-6 py-4 border-l border-slate-100">Autómata linear-bounded</td>
+                                </tr>
+                                <tr class="bg-white border-b border-slate-100 hover:bg-slate-50 transition">
+                                    <td class="px-6 py-4">
+                                        <span class="font-bold text-slate-900">Tipo 2</span><br>
+                                        <span class="text-xs text-slate-500">Gramáticas libres de contexto</span>
+                                    </td>
+                                    <td class="px-6 py-4 border-l border-slate-100">Lenguajes libres de contexto</td>
+                                    <td class="px-6 py-4 border-l border-slate-100">Autómata Pushdown (Autómata de Pila)</td>
+                                </tr>
+                                <tr class="bg-white hover:bg-slate-50 transition">
+                                    <td class="px-6 py-4">
+                                        <span class="font-bold text-slate-900">Tipo 3</span><br>
+                                        <span class="text-xs text-slate-500">Gramáticas regulares<br>Gramáticas lineales hacia la izquierda<br>Gramáticas lineales hacia la derecha</span>
+                                    </td>
+                                    <td class="px-6 py-4 border-l border-slate-100">Lenguajes regulares</td>
+                                    <td class="px-6 py-4 border-l border-slate-100">Autómata finito determinista<br>Autómata finito no determinista</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="text-[11px] text-slate-400 mt-2 text-center italic">Tabla 2.1. Jerarquía de Chomsky y su relación con las máquinas abstractas.</p>
+                </div>
+
+                <!-- DETALLES Y EJEMPLOS (NUEVO BLOQUE) -->
+                <div class="mt-10 grid md:grid-cols-2 gap-6">
+                    <div class="bg-white p-5 rounded-xl border border-green-200 shadow-sm">
+                        <h4 class="font-bold text-green-700 mb-2 flex items-center"><i class="fas fa-bolt mr-2"></i>Tipo 3: Lenguajes Regulares</h4>
+                        <p class="text-xs text-slate-600 mb-3">Son los más simples. No tienen "memoria", por lo que no pueden contar ni anidar estructuras. Se usan para el <strong>Análisis Léxico</strong> (encontrar tokens).</p>
+                        <div class="bg-green-50 p-3 rounded border border-green-100 text-xs font-mono text-slate-700">
+                            <strong>Ejemplo:</strong><br>
+                            \(L = \{a^n \mid n \ge 1\} = \{a, aa, aaa, \dots\}\)<br>
+                            Validación de correos, números de teléfono o variables.
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-5 rounded-xl border border-blue-200 shadow-sm">
+                        <h4 class="font-bold text-blue-700 mb-2 flex items-center"><i class="fas fa-layer-group mr-2"></i>Tipo 2: Libres del Contexto</h4>
+                        <p class="text-xs text-slate-600 mb-3">Tienen memoria tipo "pila" (LIFO). Pueden recordar estructuras anidadas. Se usan para el <strong>Análisis Sintáctico</strong> de los lenguajes de programación.</p>
+                        <div class="bg-blue-50 p-3 rounded border border-blue-100 text-xs font-mono text-slate-700">
+                            <strong>Ejemplo:</strong><br>
+                            \(L = \{a^n b^n \mid n \ge 1\} = \{ab, aabb, aaabbb, \dots\}\)<br>
+                            Paréntesis balanceados: <span class="text-blue-600">(( ))</span> o <span class="text-blue-600">if ( ) { }</span>.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EJERCICIOS EN JAVA (NUEVO BLOQUE) -->
+                <div class="mt-8 border-t border-slate-100 pt-6">
+                    
+                    <!-- Contexto para Libreta -->
+                    <div class="bg-indigo-50 border-l-4 border-indigo-500 p-4 mb-6 rounded-r-lg shadow-sm">
+                        <div class="flex items-start">
+                            <i class="fas fa-book-reader text-indigo-600 mt-1 mr-3 text-lg"></i>
+                            <div>
+                                <h4 class="text-sm font-bold text-indigo-900 uppercase tracking-wide">Actividad 1.4: Reconocedores de Lenguajes en Java</h4>
+                                <p class="text-sm text-indigo-800 mt-1 leading-relaxed">
+                                    <strong>Instrucciones:</strong> Copia en tu libreta los siguientes fragmentos de código en Java. 
+                                    <br>Analiza cómo la teoría se convierte en código: El Ejercicio 1 demuestra cómo validar un <strong>Lenguaje Tipo 3</strong> usando expresiones regulares integradas. El Ejercicio 2 implementa la lógica de un autómata de pila para reconocer un <strong>Lenguaje Tipo 2</strong>.
+                                    <br><strong>Reto:</strong> Describe qué imprimiría la consola para cada caso de prueba.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- Código Java Ejercicio 1 -->
+                        <div class="bg-slate-900 rounded-xl overflow-hidden shadow-lg border border-slate-700">
+                            <div class="bg-slate-800 px-4 py-2 flex items-center border-b border-slate-700">
+                                <span class="flex space-x-2 mr-4">
+                                    <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                                </span>
+                                <p class="text-xs font-mono text-slate-300">Ejercicio1_Tipo3.java</p>
+                            </div>
+                            <div class="p-4 text-sm font-mono overflow-x-auto text-slate-300">
+<pre><code><span class="text-purple-400">public class</span> <span class="text-yellow-300">ReconocedorTipo3</span> {
+    <span class="text-purple-400">public static void</span> <span class="text-blue-300">main</span>(String[] args) {
+        <span class="text-slate-500">// Alfabeto: Binario {0, 1}</span>
+        <span class="text-slate-500">// Lenguaje L: "Cadenas que inician con 1 y tienen cualquier longitud"</span>
+        String patron = <span class="text-green-400">"^1[01]*$"</span>; 
+        
+        String w1 = <span class="text-green-400">"10010"</span>;
+        String w2 = <span class="text-green-400">"0111"</span>;
+        
+        System.out.<span class="text-blue-300">println</span>(<span class="text-green-400">"w1 pertenece a L? "</span> + w1.<span class="text-blue-300">matches</span>(patron));
+        System.out.<span class="text-blue-300">println</span>(<span class="text-green-400">"w2 pertenece a L? "</span> + w2.<span class="text-blue-300">matches</span>(patron));
+    }
+}</code></pre>
+                            </div>
+                        </div>
+
+                        <!-- Código Java Ejercicio 2 -->
+                        <div class="bg-slate-900 rounded-xl overflow-hidden shadow-lg border border-slate-700">
+                            <div class="bg-slate-800 px-4 py-2 flex items-center border-b border-slate-700">
+                                <span class="flex space-x-2 mr-4">
+                                    <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                                </span>
+                                <p class="text-xs font-mono text-slate-300">Ejercicio2_Tipo2.java</p>
+                            </div>
+                            <div class="p-4 text-sm font-mono overflow-x-auto text-slate-300">
+<pre><code><span class="text-purple-400">import</span> java.util.Stack;
+
+<span class="text-purple-400">public class</span> <span class="text-yellow-300">ReconocedorTipo2</span> {
+    <span class="text-slate-500">// Reconoce Lenguaje de paréntesis balanceados L = { (^n )^n }</span>
+    <span class="text-purple-400">public static boolean</span> <span class="text-blue-300">esValido</span>(String cadena) {
+        Stack&lt;Character&gt; pila = <span class="text-purple-400">new</span> Stack&lt;&gt;();
+        
+        <span class="text-purple-400">for</span> (<span class="text-purple-400">char</span> c : cadena.<span class="text-blue-300">toCharArray</span>()) {
+            <span class="text-purple-400">if</span> (c == <span class="text-green-400">'('</span>) {
+                pila.<span class="text-blue-300">push</span>(c); <span class="text-slate-500">// Guarda memoria</span>
+            } <span class="text-purple-400">else if</span> (c == <span class="text-green-400">')'</span>) {
+                <span class="text-purple-400">if</span> (pila.<span class="text-blue-300">isEmpty</span>()) <span class="text-purple-400">return false</span>;
+                pila.<span class="text-blue-300">pop</span>();   <span class="text-slate-500">// Empareja y saca</span>
+            }
+        }
+        <span class="text-purple-400">return</span> pila.<span class="text-blue-300">isEmpty</span>(); <span class="text-slate-500">// Acepta si la pila está vacía al final</span>
+    }
+
+    <span class="text-purple-400">public static void</span> <span class="text-blue-300">main</span>(String[] args) {
+        System.out.<span class="text-blue-300">println</span>(<span class="text-green-400">"()() pertenece? "</span> + <span class="text-blue-300">esValido</span>(<span class="text-green-400">"()()"</span>));
+        System.out.<span class="text-blue-300">println</span>(<span class="text-green-400">"(() pertenece? "</span> + <span class="text-blue-300">esValido</span>(<span class="text-green-400">"(()"</span>));
+    }
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
