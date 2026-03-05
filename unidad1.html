@@ -139,6 +139,7 @@
                 <a href="#traductor" class="hover:text-blue-600 transition">1.6 Traductor</a>
                 <a href="#compilador" class="hover:text-blue-600 transition">1.7 Compiladores</a>
                 <a href="#laboratorio" class="text-blue-600 font-bold"><i class="fas fa-flask mr-1"></i>Lab</a>
+                <a href="#proyecto-final" class="text-rose-600 font-bold"><i class="fas fa-lock mr-1"></i>Proyecto</a>
             </div>
         </div>
     </div>
@@ -1143,6 +1144,227 @@
             </div>
         </section>
 
+        <!-- SECCIÓN DE PROYECTO FINAL (PROTEGIDA) -->
+        <section id="proyecto-final" class="scroll-mt-32 pb-20">
+            <div class="bg-slate-900 rounded-[2.5rem] p-8 md:p-12 text-white shadow-2xl relative overflow-hidden border border-slate-800">
+                <!-- Decoración -->
+                <div class="absolute -bottom-20 -left-20 w-80 h-80 bg-rose-600 rounded-full blur-[120px] opacity-10 pointer-events-none"></div>
+                
+                <!-- Pantalla de Bloqueo -->
+                <div id="lock-screen" class="text-center py-10 relative z-10">
+                    <i class="fas fa-lock text-5xl text-rose-500 mb-4"></i>
+                    <h2 class="text-2xl md:text-3xl font-bold mb-2">Proyecto Final - Unidad 1</h2>
+                    <p class="text-slate-400 mb-8 max-w-lg mx-auto">Esta sección contiene los requerimientos para el proyecto final y está protegida. Ingresa la contraseña proporcionada por el docente.</p>
+                    <div class="max-w-sm mx-auto flex flex-col sm:flex-row gap-3">
+                        <input type="password" id="projectPassword" class="flex-1 bg-slate-800 border border-slate-700 text-white px-4 py-3 rounded-xl focus:border-rose-500 outline-none transition text-center sm:text-left" placeholder="Contraseña...">
+                        <button onclick="unlockProjects()" class="bg-rose-600 hover:bg-rose-500 text-white px-6 py-3 rounded-xl font-bold transition shadow-lg shadow-rose-900/50">
+                            Desbloquear
+                        </button>
+                    </div>
+                    <p id="passwordError" class="text-red-400 mt-4 text-sm hidden font-bold"><i class="fas fa-exclamation-triangle mr-2"></i>Contraseña incorrecta.</p>
+                </div>
+
+                <!-- Contenido Desbloqueado (Oculto por defecto) -->
+                <div id="unlocked-content" class="hidden relative z-10">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-8 border-b border-slate-700 pb-6">
+                        <div>
+                            <h2 class="text-2xl md:text-3xl font-bold flex items-center">
+                                <i class="fas fa-award text-rose-500 mr-3"></i> Proyectos Finales
+                            </h2>
+                            <p class="text-slate-400 mt-2 text-sm">Objetivo: Desarrollar un programa que combine la teoría de Lenguajes Regulares (Tipo 3) y Libres de Contexto (Tipo 2).</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 mb-10">
+                        <h4 class="font-bold text-rose-400 mb-2 uppercase tracking-wide text-xs">Instrucciones Generales</h4>
+                        <p class="text-sm text-slate-300 leading-relaxed mb-2">El programa debe recibir una cadena de texto (String) ingresada por el usuario.</p>
+                        <ol class="list-decimal pl-5 text-sm text-slate-300 space-y-1">
+                            <li>Validar que los "tokens" de la cadena sean válidos usando <strong>Expresiones Regulares (Tipo 3)</strong>.</li>
+                            <li>Validar que el anidamiento de la cadena sea correcto utilizando una <strong>Pila / Stack (Tipo 2)</strong>.</li>
+                        </ol>
+                        <p class="text-sm text-slate-300 mt-4 font-bold">Elige UNO de los siguientes problemas (según el formato asignado):</p>
+                    </div>
+
+                    <!-- FORMATO 1 -->
+                    <h3 class="text-xl font-bold text-white mb-4 border-b border-slate-800 pb-2">Formato A (Set 1)</h3>
+                    <div class="grid md:grid-cols-3 gap-6 mb-12">
+                        <!-- Opcion 1.1 -->
+                        <div class="bg-slate-800 p-5 rounded-xl border border-slate-700">
+                            <h4 class="font-bold text-white mb-2 text-sm text-rose-300">1. Fórmulas Químicas</h4>
+                            <p class="text-xs text-slate-400 mb-4">Validar si una fórmula química compleja está bien escrita.</p>
+                            <div class="space-y-3">
+                                <div class="text-xs">
+                                    <span class="text-blue-400 font-bold block mb-1">Regex (Tipo 3):</span>
+                                    <span class="text-slate-300">Elementos con Mayúscula, seguida de cero/una minúscula y número opcional. No caracteres sueltos.</span>
+                                </div>
+                                <div class="text-xs">
+                                    <span class="text-emerald-400 font-bold block mb-1">Pila (Tipo 2):</span>
+                                    <span class="text-slate-300">Balanceo perfecto de paréntesis () y corchetes [].</span>
+                                </div>
+                                <div class="bg-slate-900 p-2 rounded text-[10px] font-mono">
+                                    <span class="text-green-400">✔ K4[Fe(CN)6]</span><br>
+                                    <span class="text-red-400">✘ [Na(Cl)]]</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Opcion 1.2 -->
+                        <div class="bg-slate-800 p-5 rounded-xl border border-slate-700">
+                            <h4 class="font-bold text-white mb-2 text-sm text-rose-300">2. Linter XML/HTML</h4>
+                            <p class="text-xs text-slate-400 mb-4">Analizar versión simplificada de un lenguaje de marcado.</p>
+                            <div class="space-y-3">
+                                <div class="text-xs">
+                                    <span class="text-blue-400 font-bold block mb-1">Regex (Tipo 3):</span>
+                                    <span class="text-slate-300">Validar contenido interno (ej. correos institucionales en &lt;email&gt; o 10 dígitos en &lt;tel&gt;).</span>
+                                </div>
+                                <div class="text-xs">
+                                    <span class="text-emerald-400 font-bold block mb-1">Pila (Tipo 2):</span>
+                                    <span class="text-slate-300">Cada etiqueta de apertura debe tener su cierre correspondiente.</span>
+                                </div>
+                                <div class="bg-slate-900 p-2 rounded text-[10px] font-mono">
+                                    <span class="text-green-400">✔ &lt;user&gt;&lt;email&gt;a@edu.mx&lt;/email&gt;&lt;/user&gt;</span><br>
+                                    <span class="text-red-400">✘ &lt;a&gt;&lt;b&gt;&lt;/a&gt;&lt;/b&gt;</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Opcion 1.3 -->
+                        <div class="bg-slate-800 p-5 rounded-xl border border-slate-700">
+                            <h4 class="font-bold text-white mb-2 text-sm text-rose-300">3. Cláusulas WHERE (SQL)</h4>
+                            <p class="text-xs text-slate-400 mb-4">Validar la sintaxis lógica de una condición de base de datos.</p>
+                            <div class="space-y-3">
+                                <div class="text-xs">
+                                    <span class="text-blue-400 font-bold block mb-1">Regex (Tipo 3):</span>
+                                    <span class="text-slate-300">Variables válidas (letras/números/_ sin iniciar con número). Operadores: >, <, =, AND, OR.</span>
+                                </div>
+                                <div class="text-xs">
+                                    <span class="text-emerald-400 font-bold block mb-1">Pila (Tipo 2):</span>
+                                    <span class="text-slate-300">Balanceo de paréntesis para prioridad lógica.</span>
+                                </div>
+                                <div class="bg-slate-900 p-2 rounded text-[10px] font-mono">
+                                    <span class="text-green-400">✔ (edad > 18 AND (saldo > 0))</span><br>
+                                    <span class="text-red-400">✘ (1edad > 18)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FORMATO 2 -->
+                    <h3 class="text-xl font-bold text-white mb-4 border-b border-slate-800 pb-2">Formato B (Set 2)</h3>
+                    <div class="grid md:grid-cols-3 gap-6 mb-12">
+                        <!-- Opcion 2.1 -->
+                        <div class="bg-slate-800 p-5 rounded-xl border border-slate-700">
+                            <h4 class="font-bold text-white mb-2 text-sm text-purple-300">1. Sintaxis JSON</h4>
+                            <p class="text-xs text-slate-400 mb-4">Validar estructura de intercambio de datos.</p>
+                            <div class="space-y-3">
+                                <div class="text-xs">
+                                    <span class="text-blue-400 font-bold block mb-1">Regex (Tipo 3):</span>
+                                    <span class="text-slate-300">Claves entre comillas dobles. Valores: números o booleanos (true/false).</span>
+                                </div>
+                                <div class="text-xs">
+                                    <span class="text-emerald-400 font-bold block mb-1">Pila (Tipo 2):</span>
+                                    <span class="text-slate-300">Objetos en llaves {} y arreglos en corchetes []. No cruzarlos.</span>
+                                </div>
+                                <div class="bg-slate-900 p-2 rounded text-[10px] font-mono">
+                                    <span class="text-green-400">✔ { "id": [1, 2] }</span><br>
+                                    <span class="text-red-400">✘ { "id": [1, 2} ]</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Opcion 2.2 -->
+                        <div class="bg-slate-800 p-5 rounded-xl border border-slate-700">
+                            <h4 class="font-bold text-white mb-2 text-sm text-purple-300">2. Fórmulas de Excel</h4>
+                            <p class="text-xs text-slate-400 mb-4">Validar sintaxis matemática con referencias.</p>
+                            <div class="space-y-3">
+                                <div class="text-xs">
+                                    <span class="text-blue-400 font-bold block mb-1">Regex (Tipo 3):</span>
+                                    <span class="text-slate-300">Celdas: 1-3 Letras Mayúsculas + Número. Funciones: SUMA, PROMEDIO, MAX.</span>
+                                </div>
+                                <div class="text-xs">
+                                    <span class="text-emerald-400 font-bold block mb-1">Pila (Tipo 2):</span>
+                                    <span class="text-slate-300">Paréntesis anidados en funciones dentro de funciones.</span>
+                                </div>
+                                <div class="bg-slate-900 p-2 rounded text-[10px] font-mono">
+                                    <span class="text-green-400">✔ SUMA(A1, MAX(B1))</span><br>
+                                    <span class="text-red-400">✘ SUMA(1A, B1)</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Opcion 2.3 -->
+                        <div class="bg-slate-800 p-5 rounded-xl border border-slate-700">
+                            <h4 class="font-bold text-white mb-2 text-sm text-purple-300">3. Formato Discord</h4>
+                            <p class="text-xs text-slate-400 mb-4">Validar mensaje de texto con formato y menciones.</p>
+                            <div class="space-y-3">
+                                <div class="text-xs">
+                                    <span class="text-blue-400 font-bold block mb-1">Regex (Tipo 3):</span>
+                                    <span class="text-slate-300">Menciones: @ + 3-10 alfanuméricos. Canales: # + minúsculas/guiones.</span>
+                                </div>
+                                <div class="text-xs">
+                                    <span class="text-emerald-400 font-bold block mb-1">Pila (Tipo 2):</span>
+                                    <span class="text-slate-300">Balanceo de formato de texto: Asteriscos * y guiones bajos _.</span>
+                                </div>
+                                <div class="bg-slate-900 p-2 rounded text-[10px] font-mono">
+                                    <span class="text-green-400">✔ Revisa *_aviso_*</span><br>
+                                    <span class="text-red-400">✘ *error _texto* _</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RÚBRICA -->
+                    <h3 class="text-xl font-bold text-white mb-4 border-b border-slate-800 pb-2">Rúbrica de Calificación (100 Puntos)</h3>
+                    <div class="bg-slate-800 rounded-xl overflow-x-auto border border-slate-700">
+                        <table class="w-full text-sm text-left text-slate-300">
+                            <thead class="text-xs uppercase bg-slate-900 text-slate-400">
+                                <tr>
+                                    <th class="px-6 py-4">Criterio</th>
+                                    <th class="px-6 py-4 border-l border-slate-700">Excelente (100%)</th>
+                                    <th class="px-6 py-4 border-l border-slate-700">Suficiente (70%)</th>
+                                    <th class="px-6 py-4 border-l border-slate-700">Deficiente (0%)</th>
+                                    <th class="px-6 py-4 border-l border-slate-700 text-center">Pts</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-700">
+                                <tr class="hover:bg-slate-700/50 transition">
+                                    <td class="px-6 py-4 font-bold">1. Léxico (Tipo 3)</td>
+                                    <td class="px-6 py-4 border-l border-slate-700 text-xs">Define Regex correctas y eficientes para extraer tokens.</td>
+                                    <td class="px-6 py-4 border-l border-slate-700 text-xs">Usa Regex con fallos menores o falsos positivos.</td>
+                                    <td class="px-6 py-4 border-l border-slate-700 text-xs text-slate-500">No utiliza Regex.</td>
+                                    <td class="px-6 py-4 border-l border-slate-700 text-center font-bold text-rose-400">30</td>
+                                </tr>
+                                <tr class="hover:bg-slate-700/50 transition">
+                                    <td class="px-6 py-4 font-bold">2. Sintaxis (Tipo 2)</td>
+                                    <td class="px-6 py-4 border-l border-slate-700 text-xs">Implementa Pila (Stack) perfecta para anidamiento.</td>
+                                    <td class="px-6 py-4 border-l border-slate-700 text-xs">Usa Pila, falla en casos cruzados o sobrantes.</td>
+                                    <td class="px-6 py-4 border-l border-slate-700 text-xs text-slate-500">Usa contadores simples o colapsa.</td>
+                                    <td class="px-6 py-4 border-l border-slate-700 text-center font-bold text-rose-400">30</td>
+                                </tr>
+                                <tr class="hover:bg-slate-700/50 transition">
+                                    <td class="px-6 py-4 font-bold">3. Lógica Total</td>
+                                    <td class="px-6 py-4 border-l border-slate-700 text-xs">Funciona como "todo". Distingue error léxico de sintáctico.</td>
+                                    <td class="px-6 py-4 border-l border-slate-700 text-xs">Valida, pero da errores genéricos.</td>
+                                    <td class="px-6 py-4 border-l border-slate-700 text-xs text-slate-500">Solo valida una parte.</td>
+                                    <td class="px-6 py-4 border-l border-slate-700 text-center font-bold text-rose-400">20</td>
+                                </tr>
+                                <tr class="hover:bg-slate-700/50 transition">
+                                    <td class="px-6 py-4 font-bold">4. Pruebas/Reporte</td>
+                                    <td class="px-6 py-4 border-l border-slate-700 text-xs">Demostración matemática clara (Regex formal y dibujo de pila).</td>
+                                    <td class="px-6 py-4 border-l border-slate-700 text-xs">Incompleto o poco claro.</td>
+                                    <td class="px-6 py-4 border-l border-slate-700 text-xs text-slate-500">No presenta.</td>
+                                    <td class="px-6 py-4 border-l border-slate-700 text-center font-bold text-rose-400">10</td>
+                                </tr>
+                                <tr class="hover:bg-slate-700/50 transition">
+                                    <td class="px-6 py-4 font-bold">5. Interfaz/UX</td>
+                                    <td class="px-6 py-4 border-l border-slate-700 text-xs">Código comentado, admite múltiples pruebas.</td>
+                                    <td class="px-6 py-4 border-l border-slate-700 text-xs">Cadenas hardcodeadas, sin comentarios.</td>
+                                    <td class="px-6 py-4 border-l border-slate-700 text-xs text-slate-500">No compila.</td>
+                                    <td class="px-6 py-4 border-l border-slate-700 text-center font-bold text-rose-400">10</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <!-- Footer -->
@@ -1222,6 +1444,25 @@
             
             if (window.MathJax) {
                 MathJax.typesetPromise();
+            }
+        }
+
+        // Lógica de validación de contraseña para el Proyecto Final
+        function unlockProjects() {
+            const passInput = document.getElementById('projectPassword').value;
+            const errorMsg = document.getElementById('passwordError');
+            const lockScreen = document.getElementById('lock-screen');
+            const unlockedContent = document.getElementById('unlocked-content');
+
+            if (passInput === 'kike1992') {
+                lockScreen.classList.add('hidden');
+                unlockedContent.classList.remove('hidden');
+            } else {
+                errorMsg.classList.remove('hidden');
+                // Efecto de error visual (shake)
+                const inputElement = document.getElementById('projectPassword');
+                inputElement.classList.add('border-red-500');
+                setTimeout(() => inputElement.classList.remove('border-red-500'), 1000);
             }
         }
     </script>
