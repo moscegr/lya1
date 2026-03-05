@@ -1049,7 +1049,7 @@
                                     2. Análisis Sintáctico (Parser)
                                     <i class="fas fa-tree opacity-0 group-hover:opacity-100 transition"></i>
                                 </h4>
-                                <p class="text-xs text-slate-500 mt-1 hidden group-hover:block">Verifica la estructura gramatical y genera el Árbol de Derivación.</p>
+                                <p class="text-xs text-slate-500 mt-1 hidden group-hover:block">Verifica la structure gramatical y genera el Árbol de Derivación.</p>
                             </div>
                             <div class="group p-3 rounded-lg hover:bg-emerald-50 border border-transparent hover:border-emerald-200 transition cursor-default">
                                 <h4 class="font-bold text-slate-700 group-hover:text-emerald-600 text-sm flex justify-between">
@@ -1242,21 +1242,22 @@
                         </div>
                         <!-- Opcion 2.3 -->
                         <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 flex flex-col">
-                            <h4 class="font-bold text-white mb-2 text-md text-purple-300">3. Formato Discord</h4>
-                            <p class="text-xs text-slate-400 mb-4 leading-relaxed">Las plataformas de mensajería utilizan símbolos especiales para dar formato al texto (negritas, cursivas) y realizar menciones estrictas a usuarios o canales.</p>
+                            <h4 class="font-bold text-white mb-2 text-md text-purple-300">3. Árboles de Carpetas</h4>
+                            <p class="text-xs text-slate-400 mb-4 leading-relaxed">Los sistemas operativos utilizan lenguajes de texto para definir la estructura de carpetas y archivos. Valida que el árbol cumpla reglas de nomenclatura y agrupamiento.</p>
                             <div class="space-y-3 flex-1">
                                 <div class="text-xs bg-slate-900/50 p-3 rounded-lg border border-slate-700/50">
                                     <span class="text-blue-400 font-bold block mb-1"><i class="fas fa-search mr-1"></i> Análisis Léxico (Tipo 3):</span>
-                                    <span class="text-slate-300 leading-relaxed">Usa <strong>Regex</strong> para extraer menciones. Usuario: @ seguido de 3-10 caracteres alfanuméricos. Canal: # seguido de letras minúsculas o guiones.</span>
+                                    <span class="text-slate-300 leading-relaxed"><strong>Regex</strong>: Carpetas inician con Mayúscula, sin caracteres especiales. Archivos en minúsculas terminando con punto y extensión (2-4 letras).</span>
                                 </div>
                                 <div class="text-xs bg-slate-900/50 p-3 rounded-lg border border-slate-700/50">
                                     <span class="text-emerald-400 font-bold block mb-1"><i class="fas fa-layer-group mr-1"></i> Análisis Sintáctico (Tipo 2):</span>
-                                    <span class="text-slate-300 leading-relaxed">Los mensajes anidan formatos usando caracteres como asteriscos (*) o guiones bajos (_). Se debe usar una <strong>Pila</strong> para asegurar que cierren en orden LIFO.</span>
+                                    <span class="text-slate-300 leading-relaxed">Las carpetas usan llaves { }. Usa una <strong>Pila</strong> para asegurar que abran y cierren correctamente sin subcarpetas mal cerradas.</span>
                                 </div>
                                 <div class="bg-slate-950 p-3 rounded-lg text-[11px] font-mono border border-slate-800 mt-auto">
                                     <span class="text-slate-500 block mb-1 uppercase tracking-wider font-sans font-bold text-[9px]">Casos de Prueba</span>
-                                    <span class="text-green-400 block truncate">✔ Revisa *_aviso_*</span>
-                                    <span class="text-red-400 block truncate">✘ *error _texto* _ <span class="text-slate-500 text-[9px] font-sans">(Cruce)</span></span>
+                                    <span class="text-green-400 block truncate">✔ Raiz { Carpeta { a.txt } b.png }</span>
+                                    <span class="text-red-400 block truncate">✘ Sistema { a.txt } } <span class="text-slate-500 text-[9px] font-sans">(Llave extra)</span></span>
+                                    <span class="text-red-400 block truncate" title="Carpeta en minúscula y archivo con mayúscula">✘ raiz { Archivo.txt } <span class="text-slate-500 text-[9px] font-sans">(Regex falla)</span></span>
                                 </div>
                             </div>
                         </div>
