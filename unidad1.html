@@ -138,7 +138,6 @@
                 <a href="#herramientas" class="hover:text-blue-600 transition">1.5 Herramientas</a>
                 <a href="#traductor" class="hover:text-blue-600 transition">1.6 Traductor</a>
                 <a href="#compilador" class="hover:text-blue-600 transition">1.7 Compiladores</a>
-                <a href="#laboratorio" class="text-blue-600 font-bold"><i class="fas fa-flask mr-1"></i>Lab</a>
                 <a href="#proyecto-final" class="text-rose-600 font-bold"><i class="fas fa-lock mr-1"></i>Proyecto</a>
             </div>
         </div>
@@ -1092,58 +1091,6 @@
             </div>
         </section>
 
-        <!-- Laboratorio Interactivo -->
-        <section id="laboratorio" class="scroll-mt-32 pb-20">
-            <div class="bg-slate-900 rounded-[2.5rem] p-8 md:p-12 text-white shadow-2xl relative overflow-hidden">
-                <div class="absolute top-0 right-0 w-96 h-96 bg-blue-600 rounded-full blur-[120px] opacity-20 pointer-events-none"></div>
-                <div class="relative z-10">
-                    <div class="flex items-center mb-8">
-                        <div class="bg-blue-600 p-3 rounded-xl mr-4">
-                            <i class="fas fa-laptop-code text-xl"></i>
-                        </div>
-                        <div>
-                            <h2 class="text-2xl md:text-3xl font-bold">Laboratorio Virtual</h2>
-                            <p class="text-blue-200 text-sm">Validador de Alfabetos y Cadenas</p>
-                        </div>
-                    </div>
-
-                    <div class="grid lg:grid-cols-2 gap-12">
-                        <div class="space-y-6">
-                            <div>
-                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">1. Define el Alfabeto (\(\Sigma\))</label>
-                                <input type="text" id="labAlphabet" value="a, b" class="w-full bg-slate-800 border border-slate-600 text-white px-4 py-3 rounded-xl focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition" placeholder="Ej: a, b, c">
-                                <p class="text-[10px] text-slate-500 mt-2">Separa los símbolos con comas.</p>
-                            </div>
-                            
-                            <div>
-                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">2. Ingresa una Cadena (w)</label>
-                                <div class="flex gap-2">
-                                    <input type="text" id="labString" class="flex-1 bg-slate-800 border border-slate-600 text-white px-4 py-3 rounded-xl focus:border-blue-500 outline-none transition" placeholder="Ej: abba">
-                                    <button onclick="validarCadena()" class="bg-blue-600 hover:bg-blue-500 text-white px-6 rounded-xl font-bold transition shadow-lg shadow-blue-900/50">
-                                        Validar
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="bg-slate-950 rounded-2xl p-6 border border-slate-800 font-mono text-sm relative">
-                            <div class="absolute top-4 right-4 flex space-x-2">
-                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                            </div>
-                            <p class="text-slate-500 mb-4 border-b border-slate-800 pb-2">Resultados del Análisis</p>
-                            <div id="labOutput" class="space-y-3">
-                                <div class="opacity-50 text-slate-400 text-center py-8">
-                                    Define un alfabeto e ingresa una cadena para comenzar...
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- SECCIÓN DE PROYECTO FINAL (PROTEGIDA) -->
         <section id="proyecto-final" class="scroll-mt-32 pb-20">
             <div class="bg-slate-900 rounded-[2.5rem] p-8 md:p-12 text-white shadow-2xl relative overflow-hidden border border-slate-800">
@@ -1402,56 +1349,6 @@
             const val = e.target.value;
             lengthDisplay.innerText = `|w| = ${val.length}`;
         });
-
-        function validarCadena() {
-            const rawAlphabet = document.getElementById('labAlphabet').value;
-            const cadena = document.getElementById('labString').value;
-            const outputDiv = document.getElementById('labOutput');
-
-            const alphabet = rawAlphabet.split(',').map(s => s.trim()).filter(s => s !== "");
-            
-            if (alphabet.length === 0) {
-                outputDiv.innerHTML = `<p class="text-red-400"><i class="fas fa-exclamation-circle mr-2"></i>Error: El alfabeto no puede estar vacío.</p>`;
-                return;
-            }
-
-            let invalidChars = [];
-            let isValid = true;
-
-            for (let char of cadena) {
-                if (!alphabet.includes(char)) {
-                    isValid = false;
-                    if(!invalidChars.includes(char)) invalidChars.push(char);
-                }
-            }
-
-            let htmlResult = "";
-            htmlResult += `<div class="mb-2"><span class="text-blue-400">Alfabeto \(\Sigma\):</span> \{${alphabet.join(', ')}\}</div>`;
-            
-            if (isValid) {
-                htmlResult += `
-                    <div class="bg-green-500/10 border border-green-500/30 p-3 rounded-lg text-green-300">
-                        <i class="fas fa-check-circle mr-2"></i> <strong>Cadena Válida</strong>
-                        <p class="text-xs mt-1 text-green-400/80">Todos los símbolos pertenecen a \(\Sigma\).</p>
-                        <p class="text-xs mt-1 font-bold">Longitud |w|: ${cadena.length}</p>
-                    </div>
-                `;
-            } else {
-                htmlResult += `
-                    <div class="bg-red-500/10 border border-red-500/30 p-3 rounded-lg text-red-300">
-                        <i class="fas fa-times-circle mr-2"></i> <strong>Cadena Inválida</strong>
-                        <p class="text-xs mt-1 text-red-400/80">Se encontraron símbolos que no están en \(\Sigma\):</p>
-                        <p class="mt-2 font-bold bg-red-900/50 inline-block px-2 py-1 rounded">"${invalidChars.join(', ')}"</p>
-                    </div>
-                `;
-            }
-
-            outputDiv.innerHTML = htmlResult;
-            
-            if (window.MathJax) {
-                MathJax.typesetPromise();
-            }
-        }
 
         // Lógica de validación de contraseña para el Proyecto Final
         function unlockProjects() {
