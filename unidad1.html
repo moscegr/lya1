@@ -465,7 +465,7 @@
                             Considerando un alfabeto \(A\) con el menor número posible de letras (1):
                         </p>
                         <div class="math-box text-xs relative z-10 text-center">
-                            $$ A = \{ a \} $$
+                            $$A = \{ a \}$$
                         </div>
                     </div>
                     <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm relative overflow-hidden">
@@ -475,7 +475,7 @@
                             El universo del discurso contiene todas las repeticiones posibles:
                         </p>
                         <div class="math-box text-xs relative z-10 text-center">
-                            $$ W(A) = \{ \lambda, a, aa, aaa, aaaa, ... \} $$
+                            $$W(A) = \{ \lambda, a, aa, aaa, aaaa, ... \}$$
                         </div>
                         <p class="text-[10px] text-slate-400 mt-2 text-right italic relative z-10">Contiene un número infinito de elementos.</p>
                     </div>
@@ -1187,61 +1187,64 @@
 
                     <!-- FORMATO 1 -->
                     <h3 class="text-xl font-bold text-white mb-4 border-b border-slate-800 pb-2">Formato A (Set 1)</h3>
-                    <div class="grid md:grid-cols-3 gap-6 mb-12">
+                    <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-6 mb-12">
                         <!-- Opcion 1.1 -->
-                        <div class="bg-slate-800 p-5 rounded-xl border border-slate-700">
-                            <h4 class="font-bold text-white mb-2 text-sm text-rose-300">1. Fórmulas Químicas</h4>
-                            <p class="text-xs text-slate-400 mb-4">Validar si una fórmula química compleja está bien escrita.</p>
-                            <div class="space-y-3">
-                                <div class="text-xs">
-                                    <span class="text-blue-400 font-bold block mb-1">Regex (Tipo 3):</span>
-                                    <span class="text-slate-300">Elementos con Mayúscula, seguida de cero/una minúscula y número opcional. No caracteres sueltos.</span>
+                        <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 flex flex-col">
+                            <h4 class="font-bold text-white mb-2 text-md text-rose-300">1. Fórmulas Químicas</h4>
+                            <p class="text-xs text-slate-400 mb-4 leading-relaxed">En química, las moléculas se representan con letras mayúsculas, minúsculas, números y signos de agrupación. El objetivo es crear un validador que determine si una fórmula está bien escrita.</p>
+                            <div class="space-y-3 flex-1">
+                                <div class="text-xs bg-slate-900/50 p-3 rounded-lg border border-slate-700/50">
+                                    <span class="text-blue-400 font-bold block mb-1"><i class="fas fa-search mr-1"></i> Análisis Léxico (Tipo 3):</span>
+                                    <span class="text-slate-300 leading-relaxed">Usa <strong>Regex</strong> para validar elementos. Empiezan con Mayúscula, seguida de cero o una minúscula, y opcionalmente un número (ej. H, Na, O2). No se permiten caracteres especiales sueltos.</span>
                                 </div>
-                                <div class="text-xs">
-                                    <span class="text-emerald-400 font-bold block mb-1">Pila (Tipo 2):</span>
-                                    <span class="text-slate-300">Balanceo perfecto de paréntesis () y corchetes [].</span>
+                                <div class="text-xs bg-slate-900/50 p-3 rounded-lg border border-slate-700/50">
+                                    <span class="text-emerald-400 font-bold block mb-1"><i class="fas fa-layer-group mr-1"></i> Análisis Sintáctico (Tipo 2):</span>
+                                    <span class="text-slate-300 leading-relaxed">Debes usar una <strong>Pila (Stack)</strong> para validar que los paréntesis () y corchetes [] estén perfectamente balanceados y cerrados en el orden LIFO correcto.</span>
                                 </div>
-                                <div class="bg-slate-900 p-2 rounded text-[10px] font-mono">
-                                    <span class="text-green-400">✔ K4[Fe(CN)6]</span><br>
-                                    <span class="text-red-400">✘ [Na(Cl)]]</span>
+                                <div class="bg-slate-950 p-3 rounded-lg text-[11px] font-mono border border-slate-800 mt-auto">
+                                    <span class="text-slate-500 block mb-1 uppercase tracking-wider font-sans font-bold text-[9px]">Casos de Prueba</span>
+                                    <span class="text-green-400 block truncate">✔ K4[Fe(CN)6]</span>
+                                    <span class="text-red-400 block truncate">✘ [Na(Cl)]] <span class="text-slate-500 text-[9px] font-sans">(Corchete extra)</span></span>
                                 </div>
                             </div>
                         </div>
                         <!-- Opcion 1.2 -->
-                        <div class="bg-slate-800 p-5 rounded-xl border border-slate-700">
-                            <h4 class="font-bold text-white mb-2 text-sm text-rose-300">2. Linter XML/HTML</h4>
-                            <p class="text-xs text-slate-400 mb-4">Analizar versión simplificada de un lenguaje de marcado.</p>
-                            <div class="space-y-3">
-                                <div class="text-xs">
-                                    <span class="text-blue-400 font-bold block mb-1">Regex (Tipo 3):</span>
-                                    <span class="text-slate-300">Validar contenido interno (ej. correos institucionales en &lt;email&gt; o 10 dígitos en &lt;tel&gt;).</span>
+                        <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 flex flex-col">
+                            <h4 class="font-bold text-white mb-2 text-md text-rose-300">2. Linter XML/HTML</h4>
+                            <p class="text-xs text-slate-400 mb-4 leading-relaxed">Los lenguajes de marcado utilizan etiquetas que envuelven contenido. El objetivo es crear un validador que analice una versión simplificada de un lenguaje de marcado como HTML.</p>
+                            <div class="space-y-3 flex-1">
+                                <div class="text-xs bg-slate-900/50 p-3 rounded-lg border border-slate-700/50">
+                                    <span class="text-blue-400 font-bold block mb-1"><i class="fas fa-search mr-1"></i> Análisis Léxico (Tipo 3):</span>
+                                    <span class="text-slate-300 leading-relaxed">Validar el contenido interno con <strong>Regex</strong>. Si hay una etiqueta &lt;email&gt; o &lt;tel&gt;, garantiza que el texto dentro sea un correo válido o un número de 10 dígitos.</span>
                                 </div>
-                                <div class="text-xs">
-                                    <span class="text-emerald-400 font-bold block mb-1">Pila (Tipo 2):</span>
-                                    <span class="text-slate-300">Cada etiqueta de apertura debe tener su cierre correspondiente.</span>
+                                <div class="text-xs bg-slate-900/50 p-3 rounded-lg border border-slate-700/50">
+                                    <span class="text-emerald-400 font-bold block mb-1"><i class="fas fa-layer-group mr-1"></i> Análisis Sintáctico (Tipo 2):</span>
+                                    <span class="text-slate-300 leading-relaxed">Usar una <strong>Pila</strong> para leer etiquetas y verificar que cada etiqueta de apertura tenga exactamente su etiqueta de cierre correspondiente en el orden correcto.</span>
                                 </div>
-                                <div class="bg-slate-900 p-2 rounded text-[10px] font-mono">
-                                    <span class="text-green-400">✔ &lt;user&gt;&lt;email&gt;a@edu.mx&lt;/email&gt;&lt;/user&gt;</span><br>
-                                    <span class="text-red-400">✘ &lt;a&gt;&lt;b&gt;&lt;/a&gt;&lt;/b&gt;</span>
+                                <div class="bg-slate-950 p-3 rounded-lg text-[11px] font-mono border border-slate-800 mt-auto">
+                                    <span class="text-slate-500 block mb-1 uppercase tracking-wider font-sans font-bold text-[9px]">Casos de Prueba</span>
+                                    <span class="text-green-400 block truncate">✔ &lt;user&gt;&lt;email&gt;a@edu.mx&lt;/email&gt;&lt;/user&gt;</span>
+                                    <span class="text-red-400 block truncate">✘ &lt;a&gt;&lt;b&gt;&lt;/a&gt;&lt;/b&gt; <span class="text-slate-500 text-[9px] font-sans">(Cruce de etiquetas)</span></span>
                                 </div>
                             </div>
                         </div>
                         <!-- Opcion 1.3 -->
-                        <div class="bg-slate-800 p-5 rounded-xl border border-slate-700">
-                            <h4 class="font-bold text-white mb-2 text-sm text-rose-300">3. Cláusulas WHERE (SQL)</h4>
-                            <p class="text-xs text-slate-400 mb-4">Validar la sintaxis lógica de una condición de base de datos.</p>
-                            <div class="space-y-3">
-                                <div class="text-xs">
-                                    <span class="text-blue-400 font-bold block mb-1">Regex (Tipo 3):</span>
-                                    <span class="text-slate-300">Variables válidas (letras/números/_ sin iniciar con número). Operadores: >, <, =, AND, OR.</span>
+                        <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 flex flex-col">
+                            <h4 class="font-bold text-white mb-2 text-md text-rose-300">3. Cláusulas WHERE (SQL)</h4>
+                            <p class="text-xs text-slate-400 mb-4 leading-relaxed">Las consultas a bases de datos requieren lógica booleana fuertemente estructurada y variables específicas. Valida la sintaxis de una condición WHERE de SQL.</p>
+                            <div class="space-y-3 flex-1">
+                                <div class="text-xs bg-slate-900/50 p-3 rounded-lg border border-slate-700/50">
+                                    <span class="text-blue-400 font-bold block mb-1"><i class="fas fa-search mr-1"></i> Análisis Léxico (Tipo 3):</span>
+                                    <span class="text-slate-300 leading-relaxed">Usar <strong>Regex</strong> para nombres de columnas (letras, números y guión bajo, sin empezar con números) y validar operadores estrictamente como >, <, =, AND, OR.</span>
                                 </div>
-                                <div class="text-xs">
-                                    <span class="text-emerald-400 font-bold block mb-1">Pila (Tipo 2):</span>
-                                    <span class="text-slate-300">Balanceo de paréntesis para prioridad lógica.</span>
+                                <div class="text-xs bg-slate-900/50 p-3 rounded-lg border border-slate-700/50">
+                                    <span class="text-emerald-400 font-bold block mb-1"><i class="fas fa-layer-group mr-1"></i> Análisis Sintáctico (Tipo 2):</span>
+                                    <span class="text-slate-300 leading-relaxed">Las condiciones lógicas se agrupan. Usar una <strong>Pila</strong> para garantizar que todos los paréntesis de la sentencia estén cerrados y balanceados.</span>
                                 </div>
-                                <div class="bg-slate-900 p-2 rounded text-[10px] font-mono">
-                                    <span class="text-green-400">✔ (edad > 18 AND (saldo > 0))</span><br>
-                                    <span class="text-red-400">✘ (1edad > 18)</span>
+                                <div class="bg-slate-950 p-3 rounded-lg text-[11px] font-mono border border-slate-800 mt-auto">
+                                    <span class="text-slate-500 block mb-1 uppercase tracking-wider font-sans font-bold text-[9px]">Casos de Prueba</span>
+                                    <span class="text-green-400 block truncate">✔ (edad > 18 AND (saldo > 0))</span>
+                                    <span class="text-red-400 block truncate">✘ (1edad > 18) <span class="text-slate-500 text-[9px] font-sans">(Variable inválida)</span></span>
                                 </div>
                             </div>
                         </div>
@@ -1249,61 +1252,64 @@
 
                     <!-- FORMATO 2 -->
                     <h3 class="text-xl font-bold text-white mb-4 border-b border-slate-800 pb-2">Formato B (Set 2)</h3>
-                    <div class="grid md:grid-cols-3 gap-6 mb-12">
+                    <div class="grid lg:grid-cols-3 md:grid-cols-2 gap-6 mb-12">
                         <!-- Opcion 2.1 -->
-                        <div class="bg-slate-800 p-5 rounded-xl border border-slate-700">
-                            <h4 class="font-bold text-white mb-2 text-sm text-purple-300">1. Sintaxis JSON</h4>
-                            <p class="text-xs text-slate-400 mb-4">Validar estructura de intercambio de datos.</p>
-                            <div class="space-y-3">
-                                <div class="text-xs">
-                                    <span class="text-blue-400 font-bold block mb-1">Regex (Tipo 3):</span>
-                                    <span class="text-slate-300">Claves entre comillas dobles. Valores: números o booleanos (true/false).</span>
+                        <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 flex flex-col">
+                            <h4 class="font-bold text-white mb-2 text-md text-purple-300">1. Sintaxis JSON</h4>
+                            <p class="text-xs text-slate-400 mb-4 leading-relaxed">El formato JSON es el estándar mundial para el intercambio de datos en la web, basado en arreglos y objetos anidados. Crea un analizador que valide su estructura.</p>
+                            <div class="space-y-3 flex-1">
+                                <div class="text-xs bg-slate-900/50 p-3 rounded-lg border border-slate-700/50">
+                                    <span class="text-blue-400 font-bold block mb-1"><i class="fas fa-search mr-1"></i> Análisis Léxico (Tipo 3):</span>
+                                    <span class="text-slate-300 leading-relaxed">Usa <strong>Regex</strong> para validar los tipos de datos primitivos: Las claves deben ser texto entre comillas dobles, y los valores números o booleanos (true, false).</span>
                                 </div>
-                                <div class="text-xs">
-                                    <span class="text-emerald-400 font-bold block mb-1">Pila (Tipo 2):</span>
-                                    <span class="text-slate-300">Objetos en llaves {} y arreglos en corchetes []. No cruzarlos.</span>
+                                <div class="text-xs bg-slate-900/50 p-3 rounded-lg border border-slate-700/50">
+                                    <span class="text-emerald-400 font-bold block mb-1"><i class="fas fa-layer-group mr-1"></i> Análisis Sintáctico (Tipo 2):</span>
+                                    <span class="text-slate-300 leading-relaxed">Los objetos se encierran en llaves {} y arreglos en corchetes []. Usa una <strong>Pila</strong> para validar que se abran y cierren sin cruzarse.</span>
                                 </div>
-                                <div class="bg-slate-900 p-2 rounded text-[10px] font-mono">
-                                    <span class="text-green-400">✔ { "id": [1, 2] }</span><br>
-                                    <span class="text-red-400">✘ { "id": [1, 2} ]</span>
+                                <div class="bg-slate-950 p-3 rounded-lg text-[11px] font-mono border border-slate-800 mt-auto">
+                                    <span class="text-slate-500 block mb-1 uppercase tracking-wider font-sans font-bold text-[9px]">Casos de Prueba</span>
+                                    <span class="text-green-400 block truncate">✔ { "id": [1, 2] }</span>
+                                    <span class="text-red-400 block truncate">✘ { "id": [1, 2} ] <span class="text-slate-500 text-[9px] font-sans">(Cruce)</span></span>
                                 </div>
                             </div>
                         </div>
                         <!-- Opcion 2.2 -->
-                        <div class="bg-slate-800 p-5 rounded-xl border border-slate-700">
-                            <h4 class="font-bold text-white mb-2 text-sm text-purple-300">2. Fórmulas de Excel</h4>
-                            <p class="text-xs text-slate-400 mb-4">Validar sintaxis matemática con referencias.</p>
-                            <div class="space-y-3">
-                                <div class="text-xs">
-                                    <span class="text-blue-400 font-bold block mb-1">Regex (Tipo 3):</span>
-                                    <span class="text-slate-300">Celdas: 1-3 Letras Mayúsculas + Número. Funciones: SUMA, PROMEDIO, MAX.</span>
+                        <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 flex flex-col">
+                            <h4 class="font-bold text-white mb-2 text-md text-purple-300">2. Fórmulas de Excel</h4>
+                            <p class="text-xs text-slate-400 mb-4 leading-relaxed">Las hojas de cálculo utilizan un lenguaje específico para realizar cálculos anidados usando referencias a celdas específicas y llamadas a funciones predefinidas.</p>
+                            <div class="space-y-3 flex-1">
+                                <div class="text-xs bg-slate-900/50 p-3 rounded-lg border border-slate-700/50">
+                                    <span class="text-blue-400 font-bold block mb-1"><i class="fas fa-search mr-1"></i> Análisis Léxico (Tipo 3):</span>
+                                    <span class="text-slate-300 leading-relaxed"><strong>Regex</strong> para celdas: 1-3 letras mayúsculas seguidas de un número mayor a cero. Además, validar que las funciones existan en una lista (SUMA, PROMEDIO).</span>
                                 </div>
-                                <div class="text-xs">
-                                    <span class="text-emerald-400 font-bold block mb-1">Pila (Tipo 2):</span>
-                                    <span class="text-slate-300">Paréntesis anidados en funciones dentro de funciones.</span>
+                                <div class="text-xs bg-slate-900/50 p-3 rounded-lg border border-slate-700/50">
+                                    <span class="text-emerald-400 font-bold block mb-1"><i class="fas fa-layer-group mr-1"></i> Análisis Sintáctico (Tipo 2):</span>
+                                    <span class="text-slate-300 leading-relaxed">Las fórmulas complejas evalúan funciones dentro de funciones. Debes usar una <strong>Pila</strong> para validar que los paréntesis de agrupación estén balanceados.</span>
                                 </div>
-                                <div class="bg-slate-900 p-2 rounded text-[10px] font-mono">
-                                    <span class="text-green-400">✔ SUMA(A1, MAX(B1))</span><br>
-                                    <span class="text-red-400">✘ SUMA(1A, B1)</span>
+                                <div class="bg-slate-950 p-3 rounded-lg text-[11px] font-mono border border-slate-800 mt-auto">
+                                    <span class="text-slate-500 block mb-1 uppercase tracking-wider font-sans font-bold text-[9px]">Casos de Prueba</span>
+                                    <span class="text-green-400 block truncate">✔ SUMA(A1, MAX(B1))</span>
+                                    <span class="text-red-400 block truncate">✘ SUMA(1A, B1) <span class="text-slate-500 text-[9px] font-sans">(Referencia mala)</span></span>
                                 </div>
                             </div>
                         </div>
                         <!-- Opcion 2.3 -->
-                        <div class="bg-slate-800 p-5 rounded-xl border border-slate-700">
-                            <h4 class="font-bold text-white mb-2 text-sm text-purple-300">3. Formato Discord</h4>
-                            <p class="text-xs text-slate-400 mb-4">Validar mensaje de texto con formato y menciones.</p>
-                            <div class="space-y-3">
-                                <div class="text-xs">
-                                    <span class="text-blue-400 font-bold block mb-1">Regex (Tipo 3):</span>
-                                    <span class="text-slate-300">Menciones: @ + 3-10 alfanuméricos. Canales: # + minúsculas/guiones.</span>
+                        <div class="bg-slate-800 p-5 rounded-xl border border-slate-700 flex flex-col">
+                            <h4 class="font-bold text-white mb-2 text-md text-purple-300">3. Formato Discord</h4>
+                            <p class="text-xs text-slate-400 mb-4 leading-relaxed">Las plataformas de mensajería utilizan símbolos especiales para dar formato al texto (negritas, cursivas) y realizar menciones estrictas a usuarios o canales.</p>
+                            <div class="space-y-3 flex-1">
+                                <div class="text-xs bg-slate-900/50 p-3 rounded-lg border border-slate-700/50">
+                                    <span class="text-blue-400 font-bold block mb-1"><i class="fas fa-search mr-1"></i> Análisis Léxico (Tipo 3):</span>
+                                    <span class="text-slate-300 leading-relaxed">Usa <strong>Regex</strong> para extraer menciones. Usuario: @ seguido de 3-10 caracteres alfanuméricos. Canal: # seguido de letras minúsculas o guiones.</span>
                                 </div>
-                                <div class="text-xs">
-                                    <span class="text-emerald-400 font-bold block mb-1">Pila (Tipo 2):</span>
-                                    <span class="text-slate-300">Balanceo de formato de texto: Asteriscos * y guiones bajos _.</span>
+                                <div class="text-xs bg-slate-900/50 p-3 rounded-lg border border-slate-700/50">
+                                    <span class="text-emerald-400 font-bold block mb-1"><i class="fas fa-layer-group mr-1"></i> Análisis Sintáctico (Tipo 2):</span>
+                                    <span class="text-slate-300 leading-relaxed">Los mensajes anidan formatos usando caracteres como asteriscos (*) o guiones bajos (_). Se debe usar una <strong>Pila</strong> para asegurar que cierren en orden LIFO.</span>
                                 </div>
-                                <div class="bg-slate-900 p-2 rounded text-[10px] font-mono">
-                                    <span class="text-green-400">✔ Revisa *_aviso_*</span><br>
-                                    <span class="text-red-400">✘ *error _texto* _</span>
+                                <div class="bg-slate-950 p-3 rounded-lg text-[11px] font-mono border border-slate-800 mt-auto">
+                                    <span class="text-slate-500 block mb-1 uppercase tracking-wider font-sans font-bold text-[9px]">Casos de Prueba</span>
+                                    <span class="text-green-400 block truncate">✔ Revisa *_aviso_*</span>
+                                    <span class="text-red-400 block truncate">✘ *error _texto* _ <span class="text-slate-500 text-[9px] font-sans">(Cruce)</span></span>
                                 </div>
                             </div>
                         </div>
