@@ -136,28 +136,44 @@
                     <h2 class="text-2xl font-bold text-slate-800">Definición Formal de una ER</h2>
                 </div>
                 
+                <!-- Analogía Didáctica (MEJORADA) -->
+                <div class="mb-8 border-l-4 border-indigo-400 pl-4 bg-indigo-50/50 py-3 pr-4 rounded-r-lg shadow-sm">
+                    <p class="text-slate-700 text-sm leading-relaxed">
+                        <strong class="text-indigo-900"><i class="fas fa-lightbulb text-amber-500 mr-2"></i>Analogía para programadores:</strong> Imagina que una Expresión Regular (ER) es como la declaración de un tipo de dato o un "filtro de seguridad". La ER <strong>NO</strong> es el texto; la ER es la regla que el programa usa para decir: <em>"¿Este String cumple con mis condiciones de seguridad? ¿Sí o no?"</em>.
+                    </p>
+                </div>
+
                 <div class="grid md:grid-cols-2 gap-8">
                     <div>
                         <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                            Una Expresión Regular sobre un alfabeto \(\Sigma\) se define de manera recursiva. Existen casos base simples y reglas para combinarlos.
+                            Matemáticamente, para construir cualquier filtro complejo, siempre empezamos con los "ladrillos más pequeños" posibles. A esto se le llama casos base:
                         </p>
                         
                         <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
                             <div class="bg-slate-50 px-4 py-2 border-b border-slate-200">
-                                <h4 class="font-bold text-slate-700 text-sm">Casos Base (Atómicos)</h4>
+                                <h4 class="font-bold text-slate-700 text-sm">Los 3 ladrillos fundamentales</h4>
                             </div>
                             <div class="p-4 space-y-4">
-                                <div class="flex items-center">
-                                    <div class="w-10 text-center font-bold text-indigo-600 text-lg">\(\emptyset\)</div>
-                                    <div class="text-sm text-slate-600 ml-2">El lenguaje vacío. No contiene ninguna cadena.</div>
+                                <div class="flex items-start">
+                                    <div class="w-10 text-center font-bold text-rose-500 text-lg mt-1">\(\emptyset\)</div>
+                                    <div class="text-sm text-slate-600 ml-2">
+                                        <strong class="text-slate-800">Conjunto Vacío:</strong> Es un filtro imposible de pasar. 
+                                        <br><span class="text-xs text-slate-400 italic">En Java: Equivale a una regla rota donde ninguna palabra, nunca, hará "match".</span>
+                                    </div>
                                 </div>
-                                <div class="flex items-center">
-                                    <div class="w-10 text-center font-bold text-indigo-600 text-lg">\(\lambda\)</div>
-                                    <div class="text-sm text-slate-600 ml-2">La cadena vacía (a veces representada como \(\epsilon\)).</div>
+                                <div class="flex items-start">
+                                    <div class="w-10 text-center font-bold text-blue-500 text-lg mt-1">\(\lambda\)</div>
+                                    <div class="text-sm text-slate-600 ml-2">
+                                        <strong class="text-slate-800">Cadena Vacía:</strong> Es un filtro que se pasa "sin escribir nada". 
+                                        <br><span class="text-xs text-slate-400 italic">En Java: Equivale a darle "Enter" a un input vacío <code>String s = "";</code>.</span>
+                                    </div>
                                 </div>
-                                <div class="flex items-center">
-                                    <div class="w-10 text-center font-bold text-indigo-600 text-lg">\(a\)</div>
-                                    <div class="text-sm text-slate-600 ml-2">Cualquier símbolo \(a\) que pertenezca al alfabeto \(\Sigma\).</div>
+                                <div class="flex items-start">
+                                    <div class="w-10 text-center font-bold text-indigo-600 text-lg mt-1">\(a\)</div>
+                                    <div class="text-sm text-slate-600 ml-2">
+                                        <strong class="text-slate-800">Símbolo Terminal:</strong> Cualquier letra individual.
+                                        <br><span class="text-xs text-slate-400 italic">En Java: Equivale a exigir explícitamente que te tecleen ese carácter exacto, ej: <code>"a"</code>.</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -167,12 +183,38 @@
                         <div class="absolute -right-10 -bottom-10 opacity-10">
                             <i class="fas fa-superscript text-9xl"></i>
                         </div>
-                        <h4 class="font-bold text-indigo-200 mb-2 uppercase tracking-widest text-xs z-10">Notación Matemática</h4>
-                        <p class="text-sm text-slate-300 mb-4 z-10">
-                            Toda ER denota un lenguaje formal \(L(r)\). Por ejemplo, si nuestra ER es el símbolo \(a\), el lenguaje que representa es un conjunto con un solo elemento:
+                        <h4 class="font-bold text-indigo-200 mb-2 uppercase tracking-widest text-xs z-10">¿Qué es L(r)?</h4>
+                        <p class="text-sm text-slate-300 mb-4 z-10 leading-relaxed">
+                            En los libros de texto verás mucho la expresión <strong>\(L(r)\)</strong>. 
+                            <br><br>
+                            Esto simplemente significa "El Lenguaje generado por la regla 'r'". Es decir, es <strong>la lista completa de todas las palabras en el universo que logran pasar el filtro</strong>.
                         </p>
-                        <div class="text-center bg-black/30 py-3 rounded-lg z-10 font-mono text-lg">
-                            $$L(a) = \{ a \}$$
+                        <div class="text-center bg-black/30 py-3 rounded-lg z-10 font-mono text-sm shadow-inner text-indigo-300">
+                            Filtro: r = a<br>
+                            <span class="text-lg text-white">L(a) = { "a" }</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EJERCICIOS BASICOS 2.1 (RENOVADO) -->
+                <div class="mt-8 border-t border-slate-100 pt-6">
+                    <div class="bg-indigo-50 border border-indigo-200 p-5 rounded-xl shadow-sm">
+                        <div class="flex items-start">
+                            <i class="fas fa-pencil-alt text-indigo-600 mt-1 mr-3 text-lg"></i>
+                            <div class="flex-1">
+                                <h4 class="text-sm font-bold text-indigo-900 uppercase tracking-wide border-b border-indigo-200 pb-2 mb-3">Actividad 2.1: Lógica de Ladrillos Base</h4>
+                                <p class="text-sm text-indigo-800 leading-relaxed mb-4">
+                                    <strong>Instrucciones:</strong> Analiza y responde en tu libreta pensando como programador.
+                                </p>
+                                <ul class="space-y-3 text-sm text-slate-700">
+                                    <li class="bg-white p-3 rounded shadow-sm border border-indigo-100">
+                                        <span class="font-bold text-indigo-700">1.</span> En un formulario web hay un campo de "Segundo Nombre" que es <strong>opcional</strong>. Matemáticamente, ¿cuál de los tres ladrillos base representa mejor que el usuario pueda presionar "Siguiente" sin escribir nada? ¿El conjunto vacío \(\emptyset\) o la cadena vacía \(\lambda\)? ¿Por qué?
+                                    </li>
+                                    <li class="bg-white p-3 rounded shadow-sm border border-indigo-100">
+                                        <span class="font-bold text-indigo-700">2.</span> Si definimos una regla \(r = x\), ¿Cuántas palabras válidas existen dentro del conjunto de respuestas correctas \(L(r)\)?
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -184,68 +226,122 @@
             <div class="concept-card p-8 bg-gradient-to-br from-white to-slate-50">
                 <div class="flex items-center mb-6">
                     <span class="text-4xl font-black text-slate-200 mr-4">2.2</span>
-                    <h2 class="text-2xl font-bold text-slate-800">Operaciones (Construcción Inductiva)</h2>
+                    <h2 class="text-2xl font-bold text-slate-800">Operaciones (Construyendo Filtros)</h2>
                 </div>
 
                 <p class="text-slate-600 text-sm mb-6">
-                    Si \(r\) y \(s\) son expresiones regulares que denotan los lenguajes \(L(r)\) y \(L(s)\), podemos combinarlas usando 3 operaciones fundamentales.
+                    Solos, los "ladrillos base" no sirven de mucho. Para validar correos o contraseñas, necesitamos pegarlos usando <strong>3 operaciones matemáticas</strong> que en programación se traducen a símbolos específicos.
                 </p>
 
                 <div class="grid lg:grid-cols-3 gap-6 mb-8">
                     <!-- Unión -->
                     <div class="bg-white p-5 rounded-xl border border-indigo-100 shadow-sm relative group hover:border-indigo-400 transition">
-                        <div class="text-indigo-500 mb-2 text-2xl"><i class="fas fa-plus-circle"></i></div>
-                        <h3 class="font-bold text-slate-800 text-md">1. Unión (\(r + s\) ó \(r | s\))</h3>
-                        <p class="text-xs text-slate-500 mt-2 h-10">Acepta cadenas del lenguaje \(r\) <strong>O</strong> del lenguaje \(s\).</p>
-                        <div class="mt-3 bg-indigo-50 p-2 rounded text-xs font-mono text-indigo-900 text-center">
-                            \(L(r+s) = L(r) \cup L(s)\)
-                        </div>
-                        <div class="mt-2 text-[11px] text-slate-400">
-                            <strong>Ej:</strong> Si \(\Sigma=\{a,b\}\), la ER \(a+b\) denota el lenguaje \(\{a, b\}\).
+                        <div class="text-indigo-500 mb-2 text-2xl"><i class="fas fa-random"></i></div>
+                        <h3 class="font-bold text-slate-800 text-md">1. Unión (La Alternativa)</h3>
+                        <p class="text-xs text-slate-500 mt-2 h-10">Es una estructura "O". Acepta el camino de la izquierda o el de la derecha.</p>
+                        <div class="mt-3 space-y-2">
+                            <div class="bg-slate-50 p-2 rounded text-xs font-mono text-slate-600 border border-slate-200">
+                                <span class="text-indigo-500 font-bold text-[10px] uppercase font-sans block mb-1">Matemáticas:</span>
+                                \(a + b\)
+                            </div>
+                            <div class="bg-indigo-900 p-2 rounded text-xs font-mono text-indigo-200 border border-indigo-700">
+                                <span class="text-indigo-400 font-bold text-[10px] uppercase font-sans block mb-1">En Java (Regex):</span>
+                                a | b
+                            </div>
                         </div>
                     </div>
 
                     <!-- Concatenación -->
                     <div class="bg-white p-5 rounded-xl border border-indigo-100 shadow-sm relative group hover:border-indigo-400 transition">
                         <div class="text-indigo-500 mb-2 text-2xl"><i class="fas fa-link"></i></div>
-                        <h3 class="font-bold text-slate-800 text-md">2. Concatenación (\(rs\))</h3>
-                        <p class="text-xs text-slate-500 mt-2 h-10">Una cadena de \(r\) seguida inmediatamente por una de \(s\).</p>
-                        <div class="mt-3 bg-indigo-50 p-2 rounded text-xs font-mono text-indigo-900 text-center">
-                            \(L(rs) = L(r) \cdot L(s)\)
-                        </div>
-                        <div class="mt-2 text-[11px] text-slate-400">
-                            <strong>Ej:</strong> La ER \(ab\) denota exactamente la cadena \(\{ab\}\).
+                        <h3 class="font-bold text-slate-800 text-md">2. Concatenación (La Secuencia)</h3>
+                        <p class="text-xs text-slate-500 mt-2 h-10">Es el orden obligatorio. Una cosa escrita exactamente después de la otra.</p>
+                        <div class="mt-3 space-y-2">
+                            <div class="bg-slate-50 p-2 rounded text-xs font-mono text-slate-600 border border-slate-200">
+                                <span class="text-indigo-500 font-bold text-[10px] uppercase font-sans block mb-1">Matemáticas:</span>
+                                \(a \cdot b\)  o simplemente  \(ab\)
+                            </div>
+                            <div class="bg-indigo-900 p-2 rounded text-xs font-mono text-indigo-200 border border-indigo-700">
+                                <span class="text-indigo-400 font-bold text-[10px] uppercase font-sans block mb-1">En Java (Regex):</span>
+                                ab
+                            </div>
                         </div>
                     </div>
 
                     <!-- Kleene -->
                     <div class="bg-white p-5 rounded-xl border border-indigo-100 shadow-sm relative group hover:border-indigo-400 transition">
-                        <div class="text-indigo-500 mb-2 text-2xl"><i class="fas fa-star"></i></div>
-                        <h3 class="font-bold text-slate-800 text-md">3. Cerradura (\(r^*\))</h3>
-                        <p class="text-xs text-slate-500 mt-2 h-10">Cero o más repeticiones de \(r\). (¡Incluye la cadena vacía \(\lambda\)!)</p>
-                        <div class="mt-3 bg-indigo-50 p-2 rounded text-xs font-mono text-indigo-900 text-center">
-                            \(L(r^*) = (L(r))^*\)
-                        </div>
-                        <div class="mt-2 text-[11px] text-slate-400">
-                            <strong>Ej:</strong> \(a^* = \{\lambda, a, aa, aaa, \dots\}\)
+                        <div class="text-indigo-500 mb-2 text-2xl"><i class="fas fa-redo-alt"></i></div>
+                        <h3 class="font-bold text-slate-800 text-md">3. Cerradura de Kleene (El Bucle)</h3>
+                        <p class="text-xs text-slate-500 mt-2 h-10">Repite el elemento anterior desde cero veces hasta el infinito.</p>
+                        <div class="mt-3 space-y-2">
+                            <div class="bg-slate-50 p-2 rounded text-xs font-mono text-slate-600 border border-slate-200">
+                                <span class="text-indigo-500 font-bold text-[10px] uppercase font-sans block mb-1">Matemáticas:</span>
+                                \(a^*\)
+                            </div>
+                            <div class="bg-indigo-900 p-2 rounded text-xs font-mono text-indigo-200 border border-indigo-700">
+                                <span class="text-indigo-400 font-bold text-[10px] uppercase font-sans block mb-1">En Java (Regex):</span>
+                                a*
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- ACTIVIDAD PARA LIBRETA -->
+                <!-- EJEMPLOS PASO A PASO (RENOVADOS CON CASOS REALES) -->
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 mb-8 shadow-inner">
+                    <h3 class="font-bold text-slate-800 mb-4 flex items-center text-lg"><i class="fas fa-magic mr-2 text-indigo-500"></i> Construyendo reglas del mundo real</h3>
+                    <p class="text-sm text-slate-600 mb-4">Observa cómo combinando estas 3 simples operaciones podemos validar variaciones complejas de palabras:</p>
+                    
+                    <div class="space-y-4">
+                        <!-- Ejemplo 1: Union -->
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 flex flex-col md:flex-row md:items-center gap-4 hover:border-indigo-300 transition">
+                            <div class="font-mono text-lg text-indigo-700 font-bold bg-indigo-50 px-4 py-2 rounded-lg w-max shadow-sm border border-indigo-100 text-center min-w-[120px]">color + colour</div>
+                            <div class="text-sm text-slate-600 flex-1">
+                                <strong>La Ortografía Dual (Usando Unión):</strong> Acepta la palabra escrita en inglés americano (color) O en inglés británico (colour).<br>
+                                <span class="inline-block mt-1 bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-mono border border-green-200">L = { "color", "colour" }</span>
+                            </div>
+                        </div>
+                        <!-- Ejemplo 2: Concatenación + Kleene -->
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 flex flex-col md:flex-row md:items-center gap-4 hover:border-indigo-300 transition">
+                            <div class="font-mono text-lg text-indigo-700 font-bold bg-indigo-50 px-4 py-2 rounded-lg w-max shadow-sm border border-indigo-100 text-center min-w-[120px]">ja(ja)*</div>
+                            <div class="text-sm text-slate-600 flex-1">
+                                <strong>Detector de Risas (Usando Concat + Kleene):</strong> Exige obligatoriamente un "ja" inicial, seguido de cero o infinitas repeticiones adicionales de "(ja)".<br>
+                                <span class="inline-block mt-1 bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-mono border border-green-200">L = { "ja", "jaja", "jajaja", "jajajaja"... }</span>
+                            </div>
+                        </div>
+                        <!-- Ejemplo 3: Combinación Total -->
+                        <div class="bg-white p-4 rounded-xl border border-slate-200 flex flex-col md:flex-row md:items-center gap-4 hover:border-indigo-300 transition">
+                            <div class="font-mono text-lg text-indigo-700 font-bold bg-indigo-50 px-4 py-2 rounded-lg w-max shadow-sm border border-indigo-100 text-center min-w-[120px]">A(0+1)*</div>
+                            <div class="text-sm text-slate-600 flex-1">
+                                <strong>Generador de IDs (Usando todo):</strong> Toda cadena que empiece estrictamente con la letra "A", seguida de cualquier cantidad y combinación de ceros y unos.<br>
+                                <span class="inline-block mt-1 bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-mono border border-green-200">L = { "A", "A0", "A1", "A00", "A0110"... }</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ACTIVIDAD PARA LIBRETA (RENOVADA) -->
                 <div class="mt-8 border-t border-slate-100 pt-6">
-                    <div class="bg-indigo-100 border-l-4 border-indigo-600 p-4 mb-6 rounded-r-lg shadow-sm">
+                    <div class="bg-indigo-100 border-l-4 border-indigo-600 p-5 mb-6 rounded-r-lg shadow-sm">
                         <div class="flex items-start">
-                            <i class="fas fa-book-open text-indigo-700 mt-1 mr-3 text-lg"></i>
-                            <div>
-                                <h4 class="text-sm font-bold text-indigo-900 uppercase tracking-wide">Actividad 2.2: Traducción Matemática</h4>
-                                <p class="text-sm text-indigo-800 mt-1 leading-relaxed">
-                                    <strong>Instrucciones:</strong> Copia en tu libreta las siguientes Expresiones Regulares y describe, escribiendo por extensión al menos 4 elementos, qué lenguaje generan. Asume \(\Sigma = \{0, 1\}\).
-                                    <br><br>
-                                    a) \(0(0+1)^*\)<br>
-                                    b) \((11)^*\)<br>
-                                    c) \((0+1)^*11(0+1)^*\)
+                            <i class="fas fa-book-open text-indigo-700 mt-1 mr-3 text-xl"></i>
+                            <div class="flex-1">
+                                <h4 class="text-md font-bold text-indigo-900 uppercase tracking-wide border-b border-indigo-200 pb-2 mb-3">Actividad 2.2: Ingeniería Inversa</h4>
+                                <p class="text-sm text-indigo-800 mt-1 leading-relaxed mb-4">
+                                    <strong>Instrucciones:</strong> En los ejemplos anteriores te dimos la fórmula matemática y tú viste el resultado. Ahora hazlo al revés: Escribe en tu libreta la Expresión Regular formal (usando símbolos matemáticos +, \(\cdot\), *) que resuelva estos problemas:
                                 </p>
+                                
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <div class="bg-white/60 p-4 rounded border border-indigo-200 shadow-sm">
+                                        <span class="font-bold text-indigo-900 text-sm mb-1 block">Reto A: Confirmaciones</span>
+                                        <p class="text-xs text-slate-700 mb-2">Un sistema de terminal que acepte únicamente la letra "S" (mayúscula) o la letra "s" (minúscula) y ninguna otra letra más.</p>
+                                        <div class="text-[10px] text-slate-400 italic">Respuesta esperada: Una regla sencilla.</div>
+                                    </div>
+                                    <div class="bg-white/60 p-4 rounded border border-indigo-200 shadow-sm">
+                                        <span class="font-bold text-indigo-900 text-sm mb-1 block">Reto B: El Llorón</span>
+                                        <p class="text-xs text-slate-700 mb-2">Una regla que acepte el llanto en chat de la letra 'b' seguida de múltiples 'u'. Ejemplo de palabras válidas: "bu", "buu", "buuuuu".</p>
+                                        <div class="text-[10px] text-slate-400 italic">Pista: La 'b' solo aparece una vez al inicio.</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -253,46 +349,6 @@
             </div>
         </section>
 
-        <!-- 2.3 Aplicaciones y Laboratorio Integrado -->
-        <section id="aplicaciones" class="scroll-mt-32">
-            <div class="concept-card p-8">
-                <div class="flex items-center mb-6">
-                    <span class="text-4xl font-black text-slate-200 mr-4">2.3</span>
-                    <h2 class="text-2xl font-bold text-slate-800">Aplicaciones Reales (Regex en Código)</h2>
-                </div>
-                <p class="text-slate-600 text-sm mb-8">
-                    En la programación moderna, la notación formal se adapta usando caracteres ASCII. En lugar del símbolo \(+\), usamos <code>|</code> o corchetes <code>[]</code>. El asterisco de Kleene <code>*</code> se mantiene igual.
-                </p>
-
-                <!-- Java Code Snippet -->
-                <div class="mb-10">
-                    <h3 class="font-bold text-slate-800 mb-3 flex items-center text-sm"><i class="fab fa-java text-rose-500 mr-2 text-lg"></i> Implementación en Java</h3>
-                    <div class="bg-slate-900 rounded-xl overflow-hidden shadow-lg border border-slate-700">
-                        <div class="bg-slate-800 px-4 py-2 flex items-center border-b border-slate-700">
-                            <span class="flex space-x-2 mr-4">
-                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                            </span>
-                            <p class="text-xs font-mono text-slate-300">ValidadorRegex.java</p>
-                        </div>
-                        <div class="p-4 text-sm font-mono overflow-x-auto text-slate-300 leading-snug">
-<pre><code><span class="text-purple-400">import</span> java.util.regex.Pattern;
-<span class="text-purple-400">import</span> java.util.regex.Matcher;
-
-<span class="text-purple-400">public class</span> <span class="text-yellow-300">Validador</span> {
-    <span class="text-purple-400">public static void</span> <span class="text-blue-300">main</span>(String[] args) {
-        <span class="text-slate-500">// ER matemática: letra(letra+digito)*</span>
-        <span class="text-slate-500">// ER en Java: ^[a-zA-Z][a-zA-Z0-9]*$</span>
-        String patron = <span class="text-green-400">"^[a-zA-Z][a-zA-Z0-9]*$"</span>;
-        String entrada = <span class="text-green-400">"var123"</span>;
-        
-        <span class="text-slate-500">// Utilizando la librería nativa</span>
-        Pattern p = Pattern.<span class="text-blue-300">compile</span>(patron);
-        Matcher m = p.<span class="text-blue-300">matcher</span>(entrada);
-        
-        <span class="text-purple-400">if</span> (m.<span class="text-blue-300">matches</span>()) {
-            System.out.<span class="text-blue-300">println</span>(<span class="text-green-400">"¡Cadena Válida!"</span>);
         <!-- 2.3 Aplicaciones -->
         <section id="aplicaciones" class="scroll-mt-32">
             <div class="concept-card p-8">
@@ -304,9 +360,79 @@
                     En la programación moderna, la notación formal se adapta usando caracteres ASCII. En lugar del símbolo <code class="font-bold text-indigo-600 bg-indigo-50 px-1.5 py-0.5 rounded">+</code>, usamos <code class="font-bold text-indigo-600 bg-indigo-50 px-1.5 py-0.5 rounded">|</code> o corchetes <code class="font-bold text-indigo-600 bg-indigo-50 px-1.5 py-0.5 rounded">[]</code>. El asterisco de Kleene <code class="font-bold text-indigo-600 bg-indigo-50 px-1.5 py-0.5 rounded">*</code> se mantiene igual.
                 </p>
 
-                <!-- Java Code Snippet -->
+                <!-- NUEVO BLOQUE: Elementos Básicos -->
                 <div class="mb-10">
-                    <h3 class="font-bold text-slate-800 mb-3 flex items-center text-sm"><i class="fab fa-java text-rose-500 mr-2 text-lg"></i> Implementación en Java</h3>
+                    <h3 class="font-bold text-slate-800 mb-4 flex items-center text-lg"><i class="fas fa-toolbox mr-2 text-indigo-500"></i> Elementos Básicos en Java (Sintaxis Regex)</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <!-- Metacaracteres -->
+                        <div class="bg-white border border-slate-200 p-3 rounded-xl shadow-sm text-center">
+                            <div class="font-mono text-lg text-indigo-600 font-bold mb-1">\d</div>
+                            <div class="text-xs text-slate-600 font-bold">Dígito numérico</div>
+                            <div class="text-[10px] text-slate-400 mt-1">Equivale a [0-9]</div>
+                        </div>
+                        <div class="bg-white border border-slate-200 p-3 rounded-xl shadow-sm text-center">
+                            <div class="font-mono text-lg text-indigo-600 font-bold mb-1">\w</div>
+                            <div class="text-xs text-slate-600 font-bold">Alfanumérico</div>
+                            <div class="text-[10px] text-slate-400 mt-1">Letras, números y "_"</div>
+                        </div>
+                        <div class="bg-white border border-slate-200 p-3 rounded-xl shadow-sm text-center">
+                            <div class="font-mono text-lg text-indigo-600 font-bold mb-1">\s</div>
+                            <div class="text-xs text-slate-600 font-bold">Espacio</div>
+                            <div class="text-[10px] text-slate-400 mt-1">Espacios o tabuladores</div>
+                        </div>
+                        <div class="bg-white border border-slate-200 p-3 rounded-xl shadow-sm text-center">
+                            <div class="font-mono text-lg text-indigo-600 font-bold mb-1">.</div>
+                            <div class="text-xs text-slate-600 font-bold">Cualquier carácter</div>
+                            <div class="text-[10px] text-slate-400 mt-1">Excepto saltos de línea</div>
+                        </div>
+                        <!-- Cuantificadores -->
+                        <div class="bg-slate-50 border border-slate-200 p-3 rounded-xl shadow-sm text-center">
+                            <div class="font-mono text-lg text-rose-500 font-bold mb-1">+</div>
+                            <div class="text-xs text-slate-600 font-bold">1 o más veces</div>
+                            <div class="text-[10px] text-slate-400 mt-1">Cerradura Positiva</div>
+                        </div>
+                        <div class="bg-slate-50 border border-slate-200 p-3 rounded-xl shadow-sm text-center">
+                            <div class="font-mono text-lg text-rose-500 font-bold mb-1">?</div>
+                            <div class="text-xs text-slate-600 font-bold">0 o 1 vez</div>
+                            <div class="text-[10px] text-slate-400 mt-1">Elemento opcional</div>
+                        </div>
+                        <div class="bg-slate-50 border border-slate-200 p-3 rounded-xl shadow-sm text-center">
+                            <div class="font-mono text-lg text-rose-500 font-bold mb-1">{n,m}</div>
+                            <div class="text-xs text-slate-600 font-bold">Repetición exacta</div>
+                            <div class="text-[10px] text-slate-400 mt-1">Entre n y m veces</div>
+                        </div>
+                        <div class="bg-slate-50 border border-slate-200 p-3 rounded-xl shadow-sm text-center">
+                            <div class="font-mono text-lg text-amber-500 font-bold mb-1">^ $</div>
+                            <div class="text-xs text-slate-600 font-bold">Anclas</div>
+                            <div class="text-[10px] text-slate-400 mt-1">Inicio y Fin de línea</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NUEVO BLOQUE: Explicación de Pattern y Matcher -->
+                <div class="mb-8 border-l-4 border-blue-500 pl-4 bg-blue-50/50 py-4 pr-4 rounded-r-lg shadow-sm">
+                    <h3 class="text-md font-bold text-blue-900 mb-2 flex items-center">
+                        <i class="fas fa-cogs mr-2"></i> El motor en Java: Pattern y Matcher
+                    </h3>
+                    <p class="text-slate-700 text-sm leading-relaxed mb-3">
+                        En Java, validar o buscar texto usando Expresiones Regulares requiere el trabajo en equipo de dos clases principales del paquete <code>java.util.regex</code>:
+                    </p>
+                    <ul class="space-y-3 text-sm text-slate-700">
+                        <li>
+                            <span class="font-bold text-blue-700 bg-blue-100 px-2 py-0.5 rounded font-mono">Pattern</span>: 
+                            Representa la "compilación" de tu expresión regular. Convierte tu string (ej. <code>"\d+"</code>) en un <strong>Autómata Finito</strong> en memoria. Compilar es un proceso "costoso" para la computadora, por lo que se hace una sola vez.
+                        </li>
+                        <li>
+                            <span class="font-bold text-blue-700 bg-blue-100 px-2 py-0.5 rounded font-mono">Matcher</span>: 
+                            Es el "cabezal de lectura" que toma el autómata generado por <code>Pattern</code> y lo ejecuta sobre una cadena de texto (String) real, evaluando estado por estado.
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Java Code Snippet 1 (Validación) - ORIGINAL -->
+                <div class="mb-10">
+                    <h3 class="font-bold text-slate-800 mb-3 flex items-center text-sm"><i class="fab fa-java text-rose-500 mr-2 text-lg"></i> Ejemplo 1: Validación Completa (matches)</h3>
+                    <p class="text-xs text-slate-500 mb-2 italic">Usa el método <code>matches()</code> cuando necesitas que <strong>toda la cadena</strong> encaje exactamente en el patrón, desde el inicio hasta el fin. Útil para validar correos, contraseñas o matrículas.</p>
                     <div class="bg-slate-900 rounded-xl overflow-hidden shadow-lg border border-slate-700">
                         <div class="bg-slate-800 px-4 py-2 flex items-center border-b border-slate-700">
                             <span class="flex space-x-2 mr-4">
@@ -327,15 +453,92 @@
         String patron = <span class="text-green-400">"^[a-zA-Z][a-zA-Z0-9]*$"</span>;
         String entrada = <span class="text-green-400">"var123"</span>;
         
-        <span class="text-slate-500">// Utilizando la librería nativa</span>
+        <span class="text-slate-500">// 1. Compilar la regla (Pattern)</span>
         Pattern p = Pattern.<span class="text-blue-300">compile</span>(patron);
+        <span class="text-slate-500">// 2. Aplicar la regla al texto (Matcher)</span>
         Matcher m = p.<span class="text-blue-300">matcher</span>(entrada);
         
-        <span class="text-purple-400">if</span> (m.<span class="text-blue-300">matches</span>()) {
+        <span class="text-purple-400">if</span> (m.<span class="text-blue-300">matches</span>()) { <span class="text-slate-500">// Evalúa TODA la cadena</span>
             System.out.<span class="text-blue-300">println</span>(<span class="text-green-400">"¡Cadena Válida!"</span>);
         }
     }
 }</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NUEVO: Java Code Snippet 2 (Extracción) -->
+                <div class="mb-10">
+                    <h3 class="font-bold text-slate-800 mb-3 flex items-center text-sm"><i class="fab fa-java text-blue-500 mr-2 text-lg"></i> Ejemplo 2: Extracción de Datos (find y group)</h3>
+                    <p class="text-xs text-slate-500 mb-2 italic">Usa el método <code>find()</code> dentro de un bucle `while` cuando quieres <strong>buscar múltiples coincidencias</strong> ocultas dentro de un texto largo (como extraer todos los números telefónicos de un documento).</p>
+                    <div class="bg-slate-900 rounded-xl overflow-hidden shadow-lg border border-slate-700">
+                        <div class="bg-slate-800 px-4 py-2 flex items-center border-b border-slate-700">
+                            <span class="flex space-x-2 mr-4">
+                                <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            </span>
+                            <p class="text-xs font-mono text-slate-300">ExtractorRegex.java</p>
+                        </div>
+                        <div class="p-4 text-sm font-mono overflow-x-auto text-slate-300 leading-snug">
+<pre><code><span class="text-purple-400">import</span> java.util.regex.Pattern;
+<span class="text-purple-400">import</span> java.util.regex.Matcher;
+
+<span class="text-purple-400">public class</span> <span class="text-yellow-300">Extractor</span> {
+    <span class="text-purple-400">public static void</span> <span class="text-blue-300">main</span>(String[] args) {
+        <span class="text-slate-500">// Texto desordenado con información mezclada</span>
+        String ticket = <span class="text-green-400">"Producto A: $150.50, Producto B: $20.00"</span>;
+        
+        <span class="text-slate-500">// Regex: El símbolo de $, seguido de 1 o más dígitos, seguido de . y 2 dígitos</span>
+        <span class="text-slate-500">// Ojo: En Java debemos escapar la barra \\d</span>
+        String patron = <span class="text-green-400">"\\$\\d+\\.\\d{2}"</span>;
+        
+        Pattern p = Pattern.<span class="text-blue-300">compile</span>(patron);
+        Matcher m = p.<span class="text-blue-300">matcher</span>(ticket);
+        
+        System.out.<span class="text-blue-300">println</span>(<span class="text-green-400">"Precios encontrados:"</span>);
+        <span class="text-slate-500">// m.find() busca la siguiente coincidencia y retorna true si la encuentra</span>
+        <span class="text-purple-400">while</span> (m.<span class="text-blue-300">find</span>()) {
+            <span class="text-slate-500">// m.group() extrae el pedazo de texto que hizo "match"</span>
+            System.out.<span class="text-blue-300">println</span>(<span class="text-green-400">"-> "</span> + m.<span class="text-blue-300">group</span>()); 
+        }
+    }
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NUEVO: Actividad 2.3 -->
+                <div class="mt-8 border-t border-slate-100 pt-6">
+                    <div class="bg-emerald-50 border-l-4 border-emerald-500 p-5 rounded-r-lg shadow-sm">
+                        <div class="flex items-start">
+                            <i class="fas fa-laptop-code text-emerald-600 mt-1 mr-3 text-xl"></i>
+                            <div class="flex-1">
+                                <h4 class="text-md font-bold text-emerald-900 uppercase tracking-wide mb-2">Actividad 2.3: Laboratorio en IDE</h4>
+                                <p class="text-sm text-emerald-800 leading-relaxed mb-4">
+                                    <strong>Instrucciones:</strong> Abre tu entorno de desarrollo (Java) y utiliza las clases <code>Pattern</code> y <code>Matcher</code> para resolver los siguientes problemas:
+                                </p>
+                                
+                                <div class="space-y-4">
+                                    <!-- Ejercicio 1 -->
+                                    <div class="bg-white p-4 rounded-xl border border-emerald-100 shadow-sm">
+                                        <h5 class="font-bold text-emerald-800 text-sm mb-1">Ejercicio A: Validación de Coordenadas (matches)</h5>
+                                        <p class="text-xs text-slate-600 mb-2">Crea un programa que valide si una cadena es una coordenada GPS básica. Debe tener un número (de 1 a 3 dígitos), una coma, un espacio, y otro número (1 a 3 dígitos).</p>
+                                        <div class="text-[11px] font-mono bg-slate-50 p-2 rounded text-slate-700">
+                                            <span class="text-green-600">Válido: "123, 45"</span> | <span class="text-red-500">Inválido: "12,45" (falta espacio)</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Ejercicio 2 -->
+                                    <div class="bg-white p-4 rounded-xl border border-emerald-100 shadow-sm">
+                                        <h5 class="font-bold text-emerald-800 text-sm mb-1">Ejercicio B: Buscador de Hashtags (find)</h5>
+                                        <p class="text-xs text-slate-600 mb-2">Dado el siguiente texto de una red social, extrae e imprime en consola únicamente los hashtags (palabras que inician con # seguidas de letras/números).</p>
+                                        <div class="text-[11px] font-mono bg-slate-50 p-2 rounded text-slate-700">
+                                            Texto: "Aprendiendo #Java en el #ITChilpancingo durante la #clase de autómatas!"
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
