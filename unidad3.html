@@ -341,7 +341,7 @@
             </div>
         </section>
 
-        <!-- 3.3 al 3.5 -->
+        <!-- 3.3 al 3.5: EL CICLO DE VIDA (EXPANDIDO) -->
         <section id="transformacion" class="scroll-mt-32">
             <div class="concept-card p-8">
                 <div class="flex items-center mb-6">
@@ -349,10 +349,11 @@
                 </div>
                 
                 <p class="text-slate-600 text-sm leading-relaxed mb-6">
-                    En la vida real, un programador de compiladores no hace dibujos. El proceso lógico que sigue el software para generar un Analizador Léxico rápido es una "tubería" matemática (Pipeline):
+                    En la vida real, un programador de compiladores no hace dibujos de autómatas a mano. El proceso lógico que sigue el software para generar un Analizador Léxico rápido (como cuando usas <code>Pattern.compile</code> en Java) es una "tubería" matemática estructurada en 3 grandes pasos:
                 </p>
 
-                <div class="relative py-4">
+                <!-- El Pipeline Visual -->
+                <div class="relative py-4 mb-10">
                     <div class="absolute left-1/2 top-0 bottom-0 w-1 bg-cyan-200 transform -translate-x-1/2 hidden md:block"></div>
                     
                     <div class="space-y-8 relative">
@@ -364,14 +365,14 @@
                             </div>
                             <div class="w-10 h-10 bg-indigo-500 rounded-full border-4 border-white shadow-lg flex items-center justify-center text-white font-bold z-10 relative">1</div>
                             <div class="md:w-5/12 md:pl-8 text-left">
-                                <div class="bg-indigo-50 p-3 rounded-lg border border-indigo-100 text-xs font-mono text-indigo-800">Expresión Regular: (a|b)*abb</div>
+                                <div class="bg-indigo-50 p-3 rounded-lg border border-indigo-100 text-xs font-mono text-indigo-800 text-center shadow-sm">Expresión Regular:<br><span class="font-bold text-sm">(a|b)*abb</span></div>
                             </div>
                         </div>
 
                         <!-- Paso 2 -->
                         <div class="flex flex-col md:flex-row items-center justify-between w-full">
                             <div class="md:w-5/12 md:pr-8 text-right mb-4 md:mb-0 order-3 md:order-1">
-                                <div class="bg-cyan-50 p-3 rounded-lg border border-cyan-100 text-xs font-mono text-cyan-800">Un autómata gigante, con múltiples caminos pero fácil de derivar.</div>
+                                <div class="bg-cyan-50 p-3 rounded-lg border border-cyan-100 text-xs font-mono text-cyan-800 text-center shadow-sm">Un autómata gigante, con múltiples caminos pero fácil de derivar.</div>
                             </div>
                             <div class="w-10 h-10 bg-cyan-500 rounded-full border-4 border-white shadow-lg flex items-center justify-center text-white font-bold z-10 relative order-2">2</div>
                             <div class="md:w-5/12 text-left md:pl-8 order-1 md:order-3">
@@ -388,11 +389,121 @@
                             </div>
                             <div class="w-10 h-10 bg-emerald-500 rounded-full border-4 border-white shadow-lg flex items-center justify-center text-white font-bold z-10 relative">3</div>
                             <div class="md:w-5/12 md:pl-8 text-left">
-                                <div class="bg-emerald-50 p-3 rounded-lg border border-emerald-100 text-xs font-mono text-emerald-800">El AFD final que programarás usando un switch-case en Java.</div>
+                                <div class="bg-emerald-50 p-3 rounded-lg border border-emerald-100 text-xs font-mono text-emerald-800 text-center shadow-sm">El AFD final que programarás usando un switch-case en Java.</div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- DESGLOSE DETALLADO Y DIGERIBLE -->
+                <div class="space-y-8">
+                    <!-- Tema 3.3 y 3.4: Thompson -->
+                    <div class="bg-indigo-50/40 p-6 rounded-2xl border border-indigo-100">
+                        <h3 class="text-lg font-bold text-indigo-900 mb-2"><i class="fas fa-cubes text-indigo-500 mr-2"></i> 3.3 y 3.4 Representar ER usando AFND (Construcción de Thompson)</h3>
+                        <p class="text-sm text-slate-700 mb-4">
+                            <strong>¿De qué trata?</strong> Imagina que es como armar un set de Legos. Cada operación matemática de las expresiones regulares (Unión, Concatenación, Cerradura) tiene un "bloque de Lego" (un mini-autómata) ya predefinido. Simplemente tomamos la ER y conectamos las piezas usando transiciones "mágicas" o vacías (\(\epsilon\)) que no consumen caracteres.
+                        </p>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded-xl border border-indigo-100 shadow-sm">
+                                <span class="font-bold text-indigo-700 text-xs uppercase tracking-wide">Concatenación ( a · b )</span>
+                                <p class="text-xs text-slate-500 mt-1 mb-2">Conectas el final de "a" directamente con el inicio de "b".</p>
+                                <div class="font-mono text-[10px] bg-slate-50 p-2 rounded text-center border border-slate-200">
+                                    [Inicio] --(a)--> [q1] --(b)--> [Fin]
+                                </div>
+                            </div>
+                            <div class="bg-white p-4 rounded-xl border border-indigo-100 shadow-sm">
+                                <span class="font-bold text-indigo-700 text-xs uppercase tracking-wide">Unión ( a | b )</span>
+                                <p class="text-xs text-slate-500 mt-1 mb-2">Creas dos caminos paralelos, la máquina se "clona" y decide cuál tomar.</p>
+                                <div class="font-mono text-[10px] bg-slate-50 p-2 rounded text-center border border-slate-200">
+                                    [Inicio] --(\(\epsilon\))--> [q1] --(a)--> [q2]<br>
+                                    [Inicio] --(\(\epsilon\))--> [q3] --(b)--> [q4]
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tema 3.3: AFND a AFD -->
+                    <div class="bg-cyan-50/40 p-6 rounded-2xl border border-cyan-100">
+                        <h3 class="text-lg font-bold text-cyan-900 mb-2"><i class="fas fa-compress-arrows-alt text-cyan-500 mr-2"></i> 3.3 Convertir AFND a AFD (Subconjuntos)</h3>
+                        <p class="text-sm text-slate-700 mb-4">
+                            <strong>¿Por qué lo hacemos?</strong> El AFND que armamos arriba es genial en papel, pero <em>imposible</em> de programar en un <code>switch</code> de Java porque un estado puede ir a múltiples lugares con la misma letra, ¡y la computadora no puede dividirse en dos!
+                            <br><br>
+                            <strong>La solución:</strong> Creamos <em>Macro-Estados</em>. Si en el AFND al leer un '0' puedes ir al estado <code>q1</code> o al estado <code>q2</code>, en tu nuevo AFD creas un súper-estado llamado <code>{q1, q2}</code>. ¡Así recuperas la certeza absoluta!
+                        </p>
+                    </div>
+
+                    <!-- Tema 3.5: Minimización -->
+                    <div class="bg-emerald-50/40 p-6 rounded-2xl border border-emerald-100">
+                        <h3 class="text-lg font-bold text-emerald-900 mb-2"><i class="fas fa-compress text-emerald-500 mr-2"></i> 3.5 Minimización de Estados</h3>
+                        <p class="text-sm text-slate-700 mb-4">
+                            <strong>Nadie quiere código redundante.</strong> Después de crear los macro-estados, tu autómata puede ser gigante y tener "estados basura" que hacen exactamente lo mismo.
+                            <br><br>
+                            El algoritmo de minimización busca dos cosas:
+                        </p>
+                        <ul class="list-disc pl-5 text-sm text-slate-700 space-y-2">
+                            <li><strong>Eliminar lo inalcanzable:</strong> Si hay un estado al que es imposible llegar desde el inicio (código muerto), simplemente bórralo.</li>
+                            <li><strong>Fusionar gemelos:</strong> Si dos estados (ej. <code>q4</code> y <code>q5</code>) van exactamente a los mismos lugares cuando leen las mismas letras, y además ambos son estados de aceptación (o ambos son de rechazo), entonces son redundantes. ¡Fusiónalos en un solo estado!</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- NUEVO: ACTIVIDAD 3.3 PARA LIBRETA (EVALUACIÓN) -->
+                <div class="mt-10 border-t border-slate-200 pt-8">
+                    <div class="bg-slate-800 p-6 rounded-2xl shadow-xl border border-slate-700">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-amber-500 w-10 h-10 rounded-full flex items-center justify-center text-white text-lg font-bold mr-3 shadow-md">
+                                <i class="fas fa-pencil-ruler"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white tracking-wide">Actividad 3.3: La Tubería de Transformación</h3>
+                        </div>
+                        <p class="text-sm text-slate-300 mb-6">
+                            <strong>Instrucciones:</strong> Aplica la teoría vista en clase resolviendo los siguientes retos en tu libreta. Tu objetivo es hacer la traza de cómo una Expresión Regular se convierte en código optimizado.
+                        </p>
+                        
+                        <div class="space-y-4">
+                            <!-- Reto 1 -->
+                            <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-600">
+                                <h4 class="font-bold text-cyan-400 text-sm mb-2">Reto 1: Construcción (ER \(\rightarrow\) AFND)</h4>
+                                <p class="text-xs text-slate-300 leading-relaxed">
+                                    Utilizando los bloques básicos del algoritmo de Thompson, <strong>dibuja</strong> el Autómata Finito No Determinista para la expresión regular: <code class="bg-slate-800 px-1 rounded text-white font-bold">a(a|b)</code>.
+                                    <br><span class="italic text-slate-500">Pista: Primero dibuja el bloque de 'a', y luego conéctalo con el bloque paralelo de 'a|b'.</span>
+                                </p>
+                            </div>
+                            
+                            <!-- Reto 2 -->
+                            <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-600">
+                                <h4 class="font-bold text-indigo-400 text-sm mb-2">Reto 2: Subconjuntos (AFND \(\rightarrow\) AFD)</h4>
+                                <p class="text-xs text-slate-300 leading-relaxed mb-3">
+                                    Observa la siguiente tabla de un AFND. Tiene el problema de los "clones" (multiples destinos para la misma letra). <strong>Construye la nueva tabla del AFD</strong> creando los Macro-Estados necesarios.
+                                </p>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-xs text-center text-slate-200 border border-slate-600 mb-2">
+                                        <thead class="bg-slate-800">
+                                            <tr><th class="p-2 border border-slate-600">AFND (Estado)</th><th class="p-2 border border-slate-600">Lee '0'</th><th class="p-2 border border-slate-600">Lee '1'</th></tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr><td class="p-2 border border-slate-600">\(\rightarrow q_0\)</td><td class="p-2 border border-slate-600 text-amber-400 font-bold">{ q0, q1 }</td><td class="p-2 border border-slate-600">{ q0 }</td></tr>
+                                            <tr><td class="p-2 border border-slate-600">q1</td><td class="p-2 border border-slate-600">\(\emptyset\) (Vacío)</td><td class="p-2 border border-slate-600">{ q2 }</td></tr>
+                                            <tr><td class="p-2 border border-slate-600 text-green-400 font-bold">*q2</td><td class="p-2 border border-slate-600">{ q2 }</td><td class="p-2 border border-slate-600">{ q2 }</td></tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <p class="text-[10px] text-slate-400 italic">Pista: Tu nuevo AFD iniciará en el macro-estado [q0]. Al leer '0' irá al nuevo macro-estado [q0, q1]. ¿A dónde va [q0, q1] cuando lee '1'?</p>
+                            </div>
+
+                            <!-- Reto 3 -->
+                            <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-600">
+                                <h4 class="font-bold text-emerald-400 text-sm mb-2">Reto 3: Minimización</h4>
+                                <p class="text-xs text-slate-300 leading-relaxed">
+                                    Imagina un Autómata Determinista (AFD) con 5 estados (\(q_0\) al \(q_4\)). Analizando el diagrama notas que el estado \(q_3\) es imposible de alcanzar siguiendo las flechas desde el inicio (\(q_0\)). Además, notas que los estados \(q_1\) y \(q_2\) hacen exactamente las mismas transiciones hacia los mismos lugares y ambos son estados de rechazo.
+                                    <br><br>
+                                    <strong>Pregunta:</strong> Aplicando las reglas de minimización de Hopcroft, ¿Cuántos estados finales y útiles tendrá tu AFD optimizado?
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
